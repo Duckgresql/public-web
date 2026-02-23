@@ -53,17 +53,17 @@
     }
 </style>
 
-<title>Duckgresql - Unified DuckDB &amp; PostgreSQL SaaS for OLAP &amp; OLTP</title>
+<title>Duckgresql - Isolated Engines, Collaborative Data Platform</title>
 <meta name="description"
-    content="Duckgresql is a powerful SaaS platform combining DuckDB and PostgreSQL in one service. Get the best of both worlds with OLAP analytics and OLTP transactional capabilities for your applications.">
+    content="Duckgresql isolates PostgreSQL for OLTP and DuckDB for OLAP, then connects both so transactional and analytical workloads collaborate in one managed platform.">
 <meta name="language" content="en">
-<meta property="og:title" content="Duckgresql - Unified DuckDB &amp; PostgreSQL SaaS for OLAP &amp; OLTP">
+<meta property="og:title" content="Duckgresql - Isolated Engines, Collaborative Data Platform">
 <meta property="og:description"
-    content="Duckgresql is a powerful SaaS platform combining DuckDB and PostgreSQL in one service. Get the best of both worlds with OLAP analytics and OLTP transactional capabilities for your applications.">
+    content="Duckgresql isolates PostgreSQL for OLTP and DuckDB for OLAP, then connects both so transactional and analytical workloads collaborate in one managed platform.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Duckgresql - Unified DuckDB &amp; PostgreSQL SaaS for OLAP &amp; OLTP">
+<meta name="twitter:title" content="Duckgresql - Isolated Engines, Collaborative Data Platform">
 <meta name="twitter:description"
-    content="Duckgresql is a powerful SaaS platform combining DuckDB and PostgreSQL in one service. Get the best of both worlds with OLAP analytics and OLTP transactional capabilities for your applications.">
+    content="Duckgresql isolates PostgreSQL for OLTP and DuckDB for OLAP, then connects both so transactional and analytical workloads collaborate in one managed platform.">
 <link rel="icon" type="image/webp" href="images/icon.webp">
 <link rel="shortcut icon" type="image/webp" href="images/icon.webp">
 <link rel="apple-touch-icon" href="images/icon.webp">
@@ -81,7 +81,7 @@
 
                                 <a href="/" class="flex items-center"
                                     data-logo="{'id':'logo','src':'upload','type':'logo'}">
-                                    <img src="images/logo.avif" alt="Duckgresql" class="h-28 py-2">
+                                    <img src="images/logo.avif" alt="Duckgresql" class="h-20 py-1">
                                 </a>
 
                                 <nav class="hidden lg:flex items-center space-x-8">
@@ -139,15 +139,14 @@
                             <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
                                 <span
                                     class="bg-gradient-to-r from-white via-[#dbeafe] to-[#2563eb] bg-clip-text text-transparent">
-                                    The Best of Both Worlds
+                                    Isolated Engines. Better Together.
                                 </span>
                             </h1>
 
                             <p class="text-xl sm:text-2xl text-[#94a3b8] max-w-3xl mx-auto mb-10 leading-relaxed">
-                                Unified SQL access to
-                                <span class="text-white font-semibold">DuckDB</span> for lightning-fast
-                                analytics and <span class="text-white font-semibold">PostgreSQL</span> for
-                                robust transactional workloads — in a single SaaS platform.
+                                Run <span class="text-white font-semibold">PostgreSQL</span> for OLTP and
+                                <span class="text-white font-semibold">DuckDB</span> for OLAP in isolated
+                                workloads that stay connected and collaborate in one managed platform.
                             </p>
 
                             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
@@ -162,11 +161,11 @@
                             <div class="flex flex-wrap items-center justify-center gap-8 text-[#64748b]">
                                 <div class="flex items-center gap-2">
                                     <i class="fa-solid fa-bolt text-[#f59e0b]" aria-hidden=true></i>
-                                    <span class="text-sm font-medium">10x faster queries</span>
+                                    <span class="text-sm font-medium">High-performance analytics</span>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <i class="fa-solid fa-shield-halved text-[#10b981]" aria-hidden=true></i>
-                                    <span class="text-sm font-medium">Enterprise security</span>
+                                    <span class="text-sm font-medium">Isolated OLTP and OLAP workloads</span>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <i class="fa-solid fa-cloud text-[#8b5cf6]" aria-hidden=true></i>
@@ -183,6 +182,38 @@
                             </svg>
                         </div>
                     </section>
+                    <section class="code-section py-24 bg-white" id=problem>
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div class="text-center mb-14">
+                                <span
+                                    class="inline-block px-4 py-1 bg-[#fef3c7] text-[#92400e] rounded-full text-sm font-semibold mb-4">PROBLEM</span>
+                                <h2 class="text-4xl font-bold text-[#1e293b] mb-4">
+                                    When Postgres Does Everything, Both Workloads Suffer
+                                </h2>
+                                <p class="text-xl text-[#64748b] max-w-3xl mx-auto">
+                                    OLTP and OLAP fight for resources when they run on one engine.
+                                </p>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="p-6 rounded-xl border border-[#e2e8f0] bg-[#f8fafc]">
+                                    <h3 class="text-lg font-bold text-[#1e293b] mb-2">Lock contention and slow writes</h3>
+                                    <p class="text-[#64748b]">Analytics queries interfere with transactional throughput.</p>
+                                </div>
+                                <div class="p-6 rounded-xl border border-[#e2e8f0] bg-[#f8fafc]">
+                                    <h3 class="text-lg font-bold text-[#1e293b] mb-2">Scaling costs increase quickly</h3>
+                                    <p class="text-[#64748b]">You overprovision OLTP infrastructure for OLAP spikes.</p>
+                                </div>
+                                <div class="p-6 rounded-xl border border-[#e2e8f0] bg-[#f8fafc]">
+                                    <h3 class="text-lg font-bold text-[#1e293b] mb-2">Warehouse pipelines become mandatory</h3>
+                                    <p class="text-[#64748b]">ETL jobs and duplicated data add lag and complexity.</p>
+                                </div>
+                                <div class="p-6 rounded-xl border border-[#e2e8f0] bg-[#f8fafc]">
+                                    <h3 class="text-lg font-bold text-[#1e293b] mb-2">A single engine is a compromise</h3>
+                                    <p class="text-[#64748b]">One workload gets priority while the other degrades.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                     <section class="code-section py-24 bg-[#eff6ff]" id=s953w08>
                         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -191,8 +222,8 @@
                                     Why Choose Duckgresql?
                                 </h2>
                                 <p class="text-xl text-[#64748b] max-w-2xl mx-auto">
-                                    Stop choosing between analytical power and transactional reliability.
-                                    Get both in one unified platform.
+                                    Isolate transactional and analytical workloads, then connect them so both
+                                    engines collaborate through one platform.
                                 </p>
                             </div>
 
@@ -278,8 +309,8 @@
                                     class="inline-flex items-center gap-3 bg-white px-6 py-4 rounded-2xl shadow-lg border border-[#e2e8f0]">
                                     <span class=text-[#64748b]>Powered by</span>
                                     <i class="fa-solid fa-link text-[#8b5cf6] text-xl" aria-hidden=true></i>
-                                    <span class="text-[#1e293b] font-bold text-lg">Duckgresql = DuckDB +
-                                        PostgreSQL</span>
+                                    <span class="text-[#1e293b] font-bold text-lg">Duckgresql = isolated engines
+                                        + collaborative workflows</span>
                                 </div>
                             </div>
                         </div>
@@ -294,8 +325,8 @@
                                     Everything You Need for Hybrid Workloads
                                 </h2>
                                 <p class="text-xl text-[#64748b] max-w-2xl mx-auto">
-                                    Built for developers who need both analytical speed and transactional
-                                    reliability without managing multiple databases.
+                                    Built for teams that need OLTP and OLAP separated for performance, but
+                                    connected to work as one system.
                                 </p>
                             </div>
 
@@ -339,8 +370,8 @@
                                         Lightning Performance
                                     </h3>
                                     <p class=text-[#64748b]>
-                                        DuckDB delivers 10-100x faster analytical queries while PostgreSQL
-                                        handles your transactional needs with proven reliability.
+                                        DuckDB is optimized for analytical workloads, while PostgreSQL handles
+                                        transactional operations with proven reliability.
                                     </p>
                                 </div>
 
@@ -361,14 +392,14 @@
                                     class="group p-8 rounded-2xl bg-[#eff6ff] border border-[#dbeafe] hover:border-[#2563eb] transition-all hover:shadow-xl hover:shadow-[#2563eb]/10">
                                     <div
                                         class="w-14 h-14 bg-[#ec4899] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                                        <i class="fa-solid fa-lock text-2xl text-white" aria-hidden=true></i>
+                                        <i class="fa-solid fa-file-import text-2xl text-white" aria-hidden=true></i>
                                     </div>
                                     <h3 class="text-xl font-bold text-[#1e293b] mb-3">
-                                        Enterprise Security
+                                        DuckDB Import & Migration
                                     </h3>
                                     <p class=text-[#64748b]>
-                                        SOC 2 compliant with encryption at rest and in transit. Role-based
-                                        access control and audit logs included.
+                                        Import your existing DuckDB data from files or MotherDuck with minimal
+                                        setup, then keep it connected to your OLTP workflows.
                                     </p>
                                 </div>
 
@@ -378,10 +409,10 @@
                                         class="w-14 h-14 bg-[#2563eb] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                                         <i class="fa-solid fa-plug text-2xl text-white" aria-hidden=true></i>
                                     </div>
-                                    <h3 class="text-xl font-bold text-[#1e293b] mb-3">Easy Integration</h3>
+                                    <h3 class="text-xl font-bold text-[#1e293b] mb-3">Driver & SDK Compatibility</h3>
                                     <p class=text-[#64748b]>
-                                        Connect via standard PostgreSQL drivers. Works with your existing
-                                        tools, ORMs, and application stack.
+                                        Connect through standard PostgreSQL drivers, and use an SDK compatible
+                                        with the DuckDB API for analytics workloads.
                                     </p>
                                 </div>
                             </div>
@@ -399,7 +430,8 @@
                                     Built for Modern Applications
                                 </h2>
                                 <p class="text-xl text-[#94a3b8] max-w-2xl mx-auto">
-                                    See how leading teams use Duckgresql to power their hybrid workloads.
+                                    See how teams combine isolated OLTP and OLAP workloads to build faster,
+                                    more reliable products.
                                 </p>
                             </div>
 
@@ -420,20 +452,20 @@
                                             <h3 class="text-xl font-bold text-white">Analytics Dashboard</h3>
                                         </div>
                                         <p class="text-[#94a3b8] mb-6">
-                                            Build real-time analytics dashboards that query live transactional
-                                            data. Get instant insights without impacting your production
+                                            Build analytics dashboards over transactional data and get insights
+                                            with low-latency queries without impacting your production
                                             database.
                                         </p>
                                         <ul class=space-y-2>
                                             <li class="flex items-center gap-2 text-[#64748b] text-sm">
                                                 <i class="fa-solid fa-check text-[#10b981] text-xs"
                                                     aria-hidden=true></i>
-                                                <span>Sub-second query response</span>
+                                                <span>Low-latency query response</span>
                                             </li>
                                             <li class="flex items-center gap-2 text-[#64748b] text-sm">
                                                 <i class="fa-solid fa-check text-[#10b981] text-xs"
                                                     aria-hidden=true></i>
-                                                <span>Live data sync from PostgreSQL</span>
+                                                <span>Fresh data from PostgreSQL</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -490,19 +522,19 @@
                                             </h3>
                                         </div>
                                         <p class="text-[#94a3b8] mb-6">
-                                            Replace expensive data warehouses with a cost-effective solution.
-                                            Run analytical queries directly on your operational data.
+                                            Use it as an alternative to a separate warehouse when your team
+                                            wants analytics over operational data with less complexity.
                                         </p>
                                         <ul class=space-y-2>
                                             <li class="flex items-center gap-2 text-[#64748b] text-sm">
                                                 <i class="fa-solid fa-check text-[#10b981] text-xs"
                                                     aria-hidden=true></i>
-                                                <span>Up to 80% cost reduction</span>
+                                                <span>Lower infrastructure and pipeline overhead</span>
                                             </li>
                                             <li class="flex items-center gap-2 text-[#64748b] text-sm">
                                                 <i class="fa-solid fa-check text-[#10b981] text-xs"
                                                     aria-hidden=true></i>
-                                                <span>No ETL pipeline needed</span>
+                                                <span>Fewer ETL steps and data copies</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -520,11 +552,11 @@
                                                 <i class="fa-solid fa-robot text-xl text-[#ec4899]"
                                                     aria-hidden=true></i>
                                             </div>
-                                            <h3 class="text-xl font-bold text-white">AI/ML Feature Store</h3>
+                                            <h3 class="text-xl font-bold text-white">AI/ML Feature Store (Coming Soon)</h3>
                                         </div>
                                         <p class="text-[#94a3b8] mb-6">
-                                            Store training data in PostgreSQL, compute features with DuckDB, and
-                                            serve predictions in real-time — all from one platform.
+                                            Planned capability: store training data in PostgreSQL, compute
+                                            features with DuckDB, and serve predictions from one platform.
                                         </p>
                                         <ul class=space-y-2>
                                             <li class="flex items-center gap-2 text-[#64748b] text-sm">
@@ -562,8 +594,8 @@
                                 Ready to Transform Your Database?
                             </h2>
                             <p class="text-xl text-[#dbeafe] mb-10 max-w-2xl mx-auto">
-                                Join thousands of developers building faster, more reliable applications
-                                with the power of DuckDB and PostgreSQL combined.
+                                Build with isolated transactional and analytical engines that collaborate in
+                                real time from one platform.
                             </p>
                             <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
                                 <a href="#join"
