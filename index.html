@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html class=h-full lang=en>
+<meta charset=utf-8>
+
+<meta name=viewport content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+<link id="google-fonts-link"
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
+    rel="stylesheet" />
+<script src="https://kit.fontawesome.com/8e98006f77.js" crossOrigin="anonymous"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+    :root {
+        --accent-color: #f59e0b;
+        --accent2-color: #10b981;
+        --accent3-color: #8b5cf6;
+        --accent4-color: #ec4899;
+        --primary-color: #2563eb;
+        --dark-text-color: #1e293b;
+        --gray-text-color: #64748b;
+        --button-padding-x: 24px;
+        --button-padding-y: 12px;
+        --font-family-body: Inter;
+        --light-text-color: #ffffff;
+        --dark-border-color: #334155;
+        --light-border-color: #e2e8f0;
+        --font-family-heading: Space Grotesk;
+        --button-rounded-radius: 8px;
+        --dark-background-color: #0f172a;
+        --light-background-color: #eff6ff;
+        --medium-background-color: #dbeafe;
+        --primary-button-text-color: #ffffff;
+        --secondary-button-bg-color: #f1f5f9;
+        --secondary-button-text-color: #2563eb;
+        --primary-button-hover-bg-color: #1d4ed8;
+        --primary-button-hover-text-color: #ffffff;
+        --secondary-button-hover-bg-color: #e2e8f0;
+        --secondary-button-hover-text-color: #1d4ed8;
+    }
+</style>
+<style>
+    .hovered-element {
+        outline: #3871E0 dashed 2px;
+    }
+
+    .clicked-element {
+        outline: #3871E0 solid 2px;
+    }
+
+    .clicked-code-section {
+        border: #3B82F6 solid 2px;
+    }
+</style>
+
+<title>Duckgresql - Unified DuckDB &amp; PostgreSQL SaaS for OLAP &amp; OLTP</title>
+<meta name="description"
+    content="Duckgresql is a powerful SaaS platform combining DuckDB and PostgreSQL in one service. Get the best of both worlds with OLAP analytics and OLTP transactional capabilities for your applications.">
+<meta name="language" content="en">
+<meta property="og:title" content="Duckgresql - Unified DuckDB &amp; PostgreSQL SaaS for OLAP &amp; OLTP">
+<meta property="og:description"
+    content="Duckgresql is a powerful SaaS platform combining DuckDB and PostgreSQL in one service. Get the best of both worlds with OLAP analytics and OLTP transactional capabilities for your applications.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Duckgresql - Unified DuckDB &amp; PostgreSQL SaaS for OLAP &amp; OLTP">
+<meta name="twitter:description"
+    content="Duckgresql is a powerful SaaS platform combining DuckDB and PostgreSQL in one service. Get the best of both worlds with OLAP analytics and OLTP transactional capabilities for your applications.">
+<link rel="icon" type="image/webp" href="images/icon.webp">
+<link rel="shortcut icon" type="image/webp" href="images/icon.webp">
+<link rel="apple-touch-icon" href="images/icon.webp">
+
+<body class="h-full bg-white">
+    <div class=frame-root>
+        <div class=frame-content>
+            <div class=[font-family:var(--font-family-body)]>
+                <div>
+                    <header
+                        class="fixed top-0 left-0 right-0 z-50 bg-[#0f172a]/95 backdrop-blur-md border-b border-[#334155] code-section"
+                        data-landingsite-section=header id=global-header>
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div class="flex items-center justify-between h-20">
+
+                                <a href="/" class="flex items-center"
+                                    data-logo="{'id':'logo','src':'upload','type':'logo'}">
+                                    <img src="images/logo.avif" alt="Duckgresql" class="h-28 py-2">
+                                </a>
+
+                                <nav class="hidden lg:flex items-center space-x-8">
+                                    <a href="#features"
+                                        class="text-white hover:text-[#2563eb] transition-colors font-medium">Features</a>
+                                    <a href=#use-cases
+                                        class="text-white hover:text-[#2563eb] transition-colors font-medium">Use
+                                        Cases</a>
+                                    <a href="#join"
+                                        class="bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-6 py-3 rounded-lg font-semibold transition-all hover:shadow-lg hover:shadow-[#2563eb]/25">
+                                        Join Waiting List
+                                    </a>
+                                </nav>
+
+                                <button class="lg:hidden text-white p-2 sf-hidden" data-landingsite-mobile-menu-toggle>
+
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="lg:hidden hidden bg-[#0f172a] border-t border-[#334155] sf-hidden"
+                            data-landingsite-mobile-menu>
+
+                        </div>
+                    </header>
+                </div>
+                <div>
+                    <section
+                        class="code-section relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0f172a] pt-20"
+                        id=sp0ol2n>
+
+                        <div class="absolute inset-0 opacity-20">
+                            <div class="absolute inset-0"
+                                style="background-image:radial-gradient(circle at 2px 2px,rgba(37,99,235,0.3) 1px,transparent 0);background-size:40px 40px">
+                            </div>
+                        </div>
+
+                        <div
+                            class="absolute top-1/4 -left-32 w-96 h-96 bg-[#2563eb] rounded-full blur-[128px] opacity-30">
+                        </div>
+                        <div
+                            class="absolute bottom-1/4 -right-32 w-96 h-96 bg-[#8b5cf6] rounded-full blur-[128px] opacity-30">
+                        </div>
+                        <div
+                            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#2563eb]/10 rounded-full blur-[100px]">
+                        </div>
+                        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+                            <div
+                                class="inline-flex items-center gap-2 bg-[#2563eb]/10 border border-[#2563eb]/30 rounded-full px-4 py-2 mb-8">
+                                <span class="flex h-2 w-2 rounded-full bg-[#10b981] animate-pulse"></span>
+                                <span class="text-[#dbeafe] text-sm font-medium">Now available for early access</span>
+                            </div>
+
+                            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+                                <span
+                                    class="bg-gradient-to-r from-white via-[#dbeafe] to-[#2563eb] bg-clip-text text-transparent">
+                                    The Best of Both Worlds
+                                </span>
+                            </h1>
+
+                            <p class="text-xl sm:text-2xl text-[#94a3b8] max-w-3xl mx-auto mb-10 leading-relaxed">
+                                Unified SQL access to
+                                <span class="text-white font-semibold">DuckDB</span> for lightning-fast
+                                analytics and <span class="text-white font-semibold">PostgreSQL</span> for
+                                robust transactional workloads — in a single SaaS platform.
+                            </p>
+
+                            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                                <a href="#join"
+                                    class="group bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all hover:shadow-xl hover:shadow-[#2563eb]/30 hover:-translate-y-1 flex items-center gap-3">
+                                    Join Waiting List
+                                    <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"
+                                        aria-hidden=true></i>
+                                </a>
+                                <a href=/demo
+                                    class="bg-transparent border-2 border-[#334155] hover:border-[#2563eb] text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all hover:bg-[#2563eb]/10 flex items-center gap-3">
+                                    <i class="fa-solid fa-play text-[#2563eb]" aria-hidden=true></i>
+                                    Watch Demo
+                                </a>
+                            </div>
+
+                            <div class="flex flex-wrap items-center justify-center gap-8 text-[#64748b]">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-bolt text-[#f59e0b]" aria-hidden=true></i>
+                                    <span class="text-sm font-medium">10x faster queries</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-shield-halved text-[#10b981]" aria-hidden=true></i>
+                                    <span class="text-sm font-medium">Enterprise security</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-cloud text-[#8b5cf6]" aria-hidden=true></i>
+                                    <span class="text-sm font-medium">Fully managed</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="absolute bottom-0 left-0 right-0">
+                            <svg viewBox="0 0 1440 120" fill=none xmlns=http://www.w3.org/2000/svg class="w-full h-24">
+                                <path
+                                    d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
+                                    fill=#eff6ff></path>
+                            </svg>
+                        </div>
+                    </section>
+                    <section class="code-section py-24 bg-[#eff6ff]" id=s953w08>
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                            <div class="text-center mb-16">
+                                <h2 class="text-4xl font-bold text-[#1e293b] mb-4">
+                                    Why Choose Duckgresql?
+                                </h2>
+                                <p class="text-xl text-[#64748b] max-w-2xl mx-auto">
+                                    Stop choosing between analytical power and transactional reliability.
+                                    Get both in one unified platform.
+                                </p>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-8">
+
+                                <div class="relative group">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-br from-[#2563eb] to-[#1d4ed8] rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity">
+                                    </div>
+                                    <div class="relative bg-white rounded-2xl p-8 border border-[#e2e8f0] shadow-lg">
+                                        <div class="flex items-center gap-4 mb-6">
+                                            <div
+                                                class="w-16 h-16 bg-[#2563eb]/10 rounded-xl flex items-center justify-center">
+                                                <i class="fa-solid fa-chart-line text-3xl text-[#2563eb]"
+                                                    aria-hidden=true></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-2xl font-bold text-[#1e293b]">DuckDB</h3>
+                                                <p class=text-[#64748b]>OLAP Powerhouse</p>
+                                            </div>
+                                        </div>
+                                        <ul class=space-y-3>
+                                            <li class="flex items-center gap-3 text-[#64748b]">
+                                                <i class="fa-solid fa-check text-[#10b981]" aria-hidden=true></i>
+                                                <span>Embedded analytical database</span>
+                                            </li>
+                                            <li class="flex items-center gap-3 text-[#64748b]">
+                                                <i class="fa-solid fa-check text-[#10b981]" aria-hidden=true></i>
+                                                <span>Columnar storage for analytics</span>
+                                            </li>
+                                            <li class="flex items-center gap-3 text-[#64748b]">
+                                                <i class="fa-solid fa-check text-[#10b981]" aria-hidden=true></i>
+                                                <span>Massively parallel processing</span>
+                                            </li>
+                                            <li class="flex items-center gap-3 text-[#64748b]">
+                                                <i class="fa-solid fa-check text-[#10b981]" aria-hidden=true></i>
+                                                <span>SQL interface with zero setup</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="relative group">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-br from-[#10b981] to-[#059669] rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity">
+                                    </div>
+                                    <div class="relative bg-white rounded-2xl p-8 border border-[#e2e8f0] shadow-lg">
+                                        <div class="flex items-center gap-4 mb-6">
+                                            <div
+                                                class="w-16 h-16 bg-[#10b981]/10 rounded-xl flex items-center justify-center">
+                                                <i class="fa-solid fa-database text-3xl text-[#10b981]"
+                                                    aria-hidden=true></i>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-2xl font-bold text-[#1e293b]">PostgreSQL</h3>
+                                                <p class=text-[#64748b]>OLTP Standard</p>
+                                            </div>
+                                        </div>
+                                        <ul class=space-y-3>
+                                            <li class="flex items-center gap-3 text-[#64748b]">
+                                                <i class="fa-solid fa-check text-[#10b981]" aria-hidden=true></i>
+                                                <span>ACID-compliant transactions</span>
+                                            </li>
+                                            <li class="flex items-center gap-3 text-[#64748b]">
+                                                <i class="fa-solid fa-check text-[#10b981]" aria-hidden=true></i>
+                                                <span>Row-based storage for CRUD</span>
+                                            </li>
+                                            <li class="flex items-center gap-3 text-[#64748b]">
+                                                <i class="fa-solid fa-check text-[#10b981]" aria-hidden=true></i>
+                                                <span>Rich ecosystem &amp; extensions</span>
+                                            </li>
+                                            <li class="flex items-center gap-3 text-[#64748b]">
+                                                <i class="fa-solid fa-check text-[#10b981]" aria-hidden=true></i>
+                                                <span>Proven reliability at scale</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-12 text-center">
+                                <div
+                                    class="inline-flex items-center gap-3 bg-white px-6 py-4 rounded-2xl shadow-lg border border-[#e2e8f0]">
+                                    <span class=text-[#64748b]>Powered by</span>
+                                    <i class="fa-solid fa-link text-[#8b5cf6] text-xl" aria-hidden=true></i>
+                                    <span class="text-[#1e293b] font-bold text-lg">Duckgresql = DuckDB +
+                                        PostgreSQL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="code-section py-24 bg-white" id=features>
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                            <div class="text-center mb-16">
+                                <span
+                                    class="inline-block px-4 py-1 bg-[#2563eb]/10 text-[#2563eb] rounded-full text-sm font-semibold mb-4">FEATURES</span>
+                                <h2 class="text-4xl font-bold text-[#1e293b] mb-4">
+                                    Everything You Need for Hybrid Workloads
+                                </h2>
+                                <p class="text-xl text-[#64748b] max-w-2xl mx-auto">
+                                    Built for developers who need both analytical speed and transactional
+                                    reliability without managing multiple databases.
+                                </p>
+                            </div>
+
+                            <div class="grid md:grid-cols-3 gap-8">
+
+                                <div
+                                    class="group p-8 rounded-2xl bg-[#eff6ff] border border-[#dbeafe] hover:border-[#2563eb] transition-all hover:shadow-xl hover:shadow-[#2563eb]/10">
+                                    <div
+                                        class="w-14 h-14 bg-[#2563eb] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                        <i class="fa-solid fa-code text-2xl text-white" aria-hidden=true></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-[#1e293b] mb-3">
+                                        Unified SQL Interface
+                                    </h3>
+                                    <p class=text-[#64748b]>
+                                        Write the same SQL queries for both analytics and transactions. No
+                                        need to learn different dialects or manage multiple connections.
+                                    </p>
+                                </div>
+
+                                <div
+                                    class="group p-8 rounded-2xl bg-[#eff6ff] border border-[#dbeafe] hover:border-[#2563eb] transition-all hover:shadow-xl hover:shadow-[#2563eb]/10">
+                                    <div
+                                        class="w-14 h-14 bg-[#8b5cf6] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                        <i class="fa-solid fa-arrows-rotate text-2xl text-white" aria-hidden=true></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-[#1e293b] mb-3">Real-time Sync</h3>
+                                    <p class=text-[#64748b]>
+                                        Automatic synchronization between DuckDB and PostgreSQL keeps your
+                                        analytical and transactional data perfectly in sync.
+                                    </p>
+                                </div>
+
+                                <div
+                                    class="group p-8 rounded-2xl bg-[#eff6ff] border border-[#dbeafe] hover:border-[#2563eb] transition-all hover:shadow-xl hover:shadow-[#2563eb]/10">
+                                    <div
+                                        class="w-14 h-14 bg-[#10b981] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                        <i class="fa-solid fa-bolt text-2xl text-white" aria-hidden=true></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-[#1e293b] mb-3">
+                                        Lightning Performance
+                                    </h3>
+                                    <p class=text-[#64748b]>
+                                        DuckDB delivers 10-100x faster analytical queries while PostgreSQL
+                                        handles your transactional needs with proven reliability.
+                                    </p>
+                                </div>
+
+                                <div
+                                    class="group p-8 rounded-2xl bg-[#eff6ff] border border-[#dbeafe] hover:border-[#2563eb] transition-all hover:shadow-xl hover:shadow-[#2563eb]/10">
+                                    <div
+                                        class="w-14 h-14 bg-[#f59e0b] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                        <i class="fa-solid fa-server text-2xl text-white" aria-hidden=true></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-[#1e293b] mb-3">Fully Managed</h3>
+                                    <p class=text-[#64748b]>
+                                        We handle scaling, backups, security, and maintenance. Deploy in
+                                        seconds and focus on building your application.
+                                    </p>
+                                </div>
+
+                                <div
+                                    class="group p-8 rounded-2xl bg-[#eff6ff] border border-[#dbeafe] hover:border-[#2563eb] transition-all hover:shadow-xl hover:shadow-[#2563eb]/10">
+                                    <div
+                                        class="w-14 h-14 bg-[#ec4899] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                        <i class="fa-solid fa-lock text-2xl text-white" aria-hidden=true></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-[#1e293b] mb-3">
+                                        Enterprise Security
+                                    </h3>
+                                    <p class=text-[#64748b]>
+                                        SOC 2 compliant with encryption at rest and in transit. Role-based
+                                        access control and audit logs included.
+                                    </p>
+                                </div>
+
+                                <div
+                                    class="group p-8 rounded-2xl bg-[#eff6ff] border border-[#dbeafe] hover:border-[#2563eb] transition-all hover:shadow-xl hover:shadow-[#2563eb]/10">
+                                    <div
+                                        class="w-14 h-14 bg-[#2563eb] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                        <i class="fa-solid fa-plug text-2xl text-white" aria-hidden=true></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-[#1e293b] mb-3">Easy Integration</h3>
+                                    <p class=text-[#64748b]>
+                                        Connect via standard PostgreSQL drivers. Works with your existing
+                                        tools, ORMs, and application stack.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="text-center mt-12">
+                                <a href="#features"
+                                    class="inline-flex items-center gap-2 text-[#2563eb] font-semibold hover:gap-3 transition-all">
+                                    View all features <i class="fa-solid fa-arrow-right" aria-hidden=true></i>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="code-section py-24 bg-[#0f172a]" id="use-cases">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                            <div class="text-center mb-16">
+                                <span
+                                    class="inline-block px-4 py-1 bg-[#8b5cf6]/20 text-[#8b5cf6] rounded-full text-sm font-semibold mb-4">USE
+                                    CASES</span>
+                                <h2 class="text-4xl font-bold text-white mb-4">
+                                    Built for Modern Applications
+                                </h2>
+                                <p class="text-xl text-[#94a3b8] max-w-2xl mx-auto">
+                                    See how leading teams use Duckgresql to power their hybrid workloads.
+                                </p>
+                            </div>
+
+                            <div class="grid lg:grid-cols-2 gap-8">
+
+                                <div
+                                    class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1e293b] to-[#0f172a] border border-[#334155] hover:border-[#2563eb] transition-all">
+                                    <div
+                                        class="absolute top-0 right-0 w-64 h-64 bg-[#2563eb]/10 rounded-full blur-[64px]">
+                                    </div>
+                                    <div class="relative p-8">
+                                        <div class="flex items-center gap-4 mb-6">
+                                            <div
+                                                class="w-12 h-12 bg-[#2563eb]/20 rounded-lg flex items-center justify-center">
+                                                <i class="fa-solid fa-chart-pie text-xl text-[#2563eb]"
+                                                    aria-hidden=true></i>
+                                            </div>
+                                            <h3 class="text-xl font-bold text-white">Analytics Dashboard</h3>
+                                        </div>
+                                        <p class="text-[#94a3b8] mb-6">
+                                            Build real-time analytics dashboards that query live transactional
+                                            data. Get instant insights without impacting your production
+                                            database.
+                                        </p>
+                                        <ul class=space-y-2>
+                                            <li class="flex items-center gap-2 text-[#64748b] text-sm">
+                                                <i class="fa-solid fa-check text-[#10b981] text-xs"
+                                                    aria-hidden=true></i>
+                                                <span>Sub-second query response</span>
+                                            </li>
+                                            <li class="flex items-center gap-2 text-[#64748b] text-sm">
+                                                <i class="fa-solid fa-check text-[#10b981] text-xs"
+                                                    aria-hidden=true></i>
+                                                <span>Live data sync from PostgreSQL</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1e293b] to-[#0f172a] border border-[#334155] hover:border-[#10b981] transition-all">
+                                    <div
+                                        class="absolute top-0 right-0 w-64 h-64 bg-[#10b981]/10 rounded-full blur-[64px]">
+                                    </div>
+                                    <div class="relative p-8">
+                                        <div class="flex items-center gap-4 mb-6">
+                                            <div
+                                                class="w-12 h-12 bg-[#10b981]/20 rounded-lg flex items-center justify-center">
+                                                <i class="fa-solid fa-mobile-screen text-xl text-[#10b981]"
+                                                    aria-hidden=true></i>
+                                            </div>
+                                            <h3 class="text-xl font-bold text-white">Mobile App Backend</h3>
+                                        </div>
+                                        <p class="text-[#94a3b8] mb-6">
+                                            Power your mobile app with PostgreSQL for user data and
+                                            transactions, while running complex analytics behind the scenes with
+                                            DuckDB.
+                                        </p>
+                                        <ul class=space-y-2>
+                                            <li class="flex items-center gap-2 text-[#64748b] text-sm">
+                                                <i class="fa-solid fa-check text-[#10b981] text-xs"
+                                                    aria-hidden=true></i>
+                                                <span>High-concurrency support</span>
+                                            </li>
+                                            <li class="flex items-center gap-2 text-[#64748b] text-sm">
+                                                <i class="fa-solid fa-check text-[#10b981] text-xs"
+                                                    aria-hidden=true></i>
+                                                <span>Automatic read/write splitting</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1e293b] to-[#0f172a] border border-[#334155] hover:border-[#f59e0b] transition-all">
+                                    <div
+                                        class="absolute top-0 right-0 w-64 h-64 bg-[#f59e0b]/10 rounded-full blur-[64px]">
+                                    </div>
+                                    <div class="relative p-8">
+                                        <div class="flex items-center gap-4 mb-6">
+                                            <div
+                                                class="w-12 h-12 bg-[#f59e0b]/20 rounded-lg flex items-center justify-center">
+                                                <i class="fa-solid fa-warehouse text-xl text-[#f59e0b]"
+                                                    aria-hidden=true></i>
+                                            </div>
+                                            <h3 class="text-xl font-bold text-white">
+                                                Data Warehouse Alternative
+                                            </h3>
+                                        </div>
+                                        <p class="text-[#94a3b8] mb-6">
+                                            Replace expensive data warehouses with a cost-effective solution.
+                                            Run analytical queries directly on your operational data.
+                                        </p>
+                                        <ul class=space-y-2>
+                                            <li class="flex items-center gap-2 text-[#64748b] text-sm">
+                                                <i class="fa-solid fa-check text-[#10b981] text-xs"
+                                                    aria-hidden=true></i>
+                                                <span>Up to 80% cost reduction</span>
+                                            </li>
+                                            <li class="flex items-center gap-2 text-[#64748b] text-sm">
+                                                <i class="fa-solid fa-check text-[#10b981] text-xs"
+                                                    aria-hidden=true></i>
+                                                <span>No ETL pipeline needed</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1e293b] to-[#0f172a] border border-[#334155] hover:border-[#ec4899] transition-all">
+                                    <div
+                                        class="absolute top-0 right-0 w-64 h-64 bg-[#ec4899]/10 rounded-full blur-[64px]">
+                                    </div>
+                                    <div class="relative p-8">
+                                        <div class="flex items-center gap-4 mb-6">
+                                            <div
+                                                class="w-12 h-12 bg-[#ec4899]/20 rounded-lg flex items-center justify-center">
+                                                <i class="fa-solid fa-robot text-xl text-[#ec4899]"
+                                                    aria-hidden=true></i>
+                                            </div>
+                                            <h3 class="text-xl font-bold text-white">AI/ML Feature Store</h3>
+                                        </div>
+                                        <p class="text-[#94a3b8] mb-6">
+                                            Store training data in PostgreSQL, compute features with DuckDB, and
+                                            serve predictions in real-time — all from one platform.
+                                        </p>
+                                        <ul class=space-y-2>
+                                            <li class="flex items-center gap-2 text-[#64748b] text-sm">
+                                                <i class="fa-solid fa-check text-[#10b981] text-xs"
+                                                    aria-hidden=true></i>
+                                                <span>Feature engineering at scale</span>
+                                            </li>
+                                            <li class="flex items-center gap-2 text-[#64748b] text-sm">
+                                                <i class="fa-solid fa-check text-[#10b981] text-xs"
+                                                    aria-hidden=true></i>
+                                                <span>Online/offline feature consistency</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center mt-12">
+                                <a href=#use-cases
+                                    class="inline-flex items-center gap-2 text-white font-semibold hover:gap-3 transition-all">
+                                    Explore all use cases <i class="fa-solid fa-arrow-right" aria-hidden=true></i>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="code-section relative py-24 bg-[#2563eb] overflow-hidden" id=simcn2h>
+
+                        <div class="absolute inset-0 opacity-10">
+                            <div class="absolute inset-0"
+                                style="background-image:radial-gradient(circle at 2px 2px,white 1px,transparent 0);background-size:32px 32px">
+                            </div>
+                        </div>
+
+                        <div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-[128px] opacity-10">
+                        </div>
+                        <div
+                            class="absolute bottom-0 left-0 w-96 h-96 bg-[#8b5cf6] rounded-full blur-[128px] opacity-20">
+                        </div>
+                        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                            <h2 class="text-4xl sm:text-5xl font-bold text-white mb-6">
+                                Ready to Transform Your Database?
+                            </h2>
+                            <p class="text-xl text-[#dbeafe] mb-10 max-w-2xl mx-auto">
+                                Join thousands of developers building faster, more reliable applications
+                                with the power of DuckDB and PostgreSQL combined.
+                            </p>
+                            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                                <a href="#join"
+                                    class="bg-white text-[#2563eb] px-8 py-4 rounded-xl font-bold text-lg transition-all hover:shadow-2xl hover:scale-105 flex items-center gap-3">
+                                    Join Waiting List
+                                    <i class="fa-solid fa-arrow-right" aria-hidden=true></i>
+                                </a>
+                                <a href=/contact
+                                    class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg transition-all hover:bg-white/10 flex items-center gap-3">
+                                    Talk to Sales
+                                </a>
+                            </div>
+                            <p class="text-[#dbeafe] mt-6 text-sm">
+                                <i class="fa-solid fa-check-circle mr-2" aria-hidden=true></i>
+                                No credit card required • 14-day free trial • Cancel anytime
+                            </p>
+                        </div>
+                    </section>
+                    <section class="code-section py-24 bg-[#eff6ff]" id="join">
+                        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div class="text-center mb-10">
+                                <h2 class="text-4xl font-bold text-[#1e293b] mb-4">Join the Waiting List</h2>
+                                <p class="text-lg text-[#64748b]">
+                                    DuckGreSQL is currently in private beta. Leave your details and we'll notify you
+                                    when access is available.
+                                </p>
+                            </div>
+
+                            <div class="bg-white border border-[#e2e8f0] rounded-2xl shadow-lg p-6 sm:p-8">
+                                <div id="waitlist-success"
+                                    class="hidden text-center bg-[#ecfdf5] border border-[#10b981]/25 rounded-xl p-6 mb-6">
+                                    <h3 class="text-2xl font-bold text-[#065f46] mb-2">You're on the list!</h3>
+                                    <p class="text-[#047857]">
+                                        Thanks for your interest in DuckGreSQL. We'll reach out when your access is
+                                        ready.
+                                    </p>
+                                </div>
+
+                                <form id="waitlist-form" class="space-y-5" method="post" action="https://duckgresql.io/api/waitlist"
+                                    novalidate>
+                                    <div>
+                                        <label for="waitlist-name" class="block text-sm font-semibold text-[#1e293b] mb-2">Name</label>
+                                        <input id="waitlist-name" name="name" type="text" required minlength="2"
+                                            maxlength="255" autocomplete="name"
+                                            placeholder="Your full name"
+                                            class="w-full rounded-lg border border-[#cbd5e1] px-4 py-3 text-[#1e293b] placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#2563eb]/20 focus:border-[#2563eb]">
+                                        <p class="text-[#dc2626] text-sm mt-2 hidden" data-error-for="name"></p>
+                                    </div>
+
+                                    <div>
+                                        <label for="waitlist-company"
+                                            class="block text-sm font-semibold text-[#1e293b] mb-2">Company</label>
+                                        <input id="waitlist-company" name="company" type="text" required minlength="2"
+                                            maxlength="255" autocomplete="organization"
+                                            placeholder="Your company name"
+                                            class="w-full rounded-lg border border-[#cbd5e1] px-4 py-3 text-[#1e293b] placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#2563eb]/20 focus:border-[#2563eb]">
+                                        <p class="text-[#dc2626] text-sm mt-2 hidden" data-error-for="company"></p>
+                                    </div>
+
+                                    <div>
+                                        <label for="waitlist-email"
+                                            class="block text-sm font-semibold text-[#1e293b] mb-2">Email</label>
+                                        <input id="waitlist-email" name="email" type="email" required
+                                            autocomplete="email" placeholder="you@example.com"
+                                            class="w-full rounded-lg border border-[#cbd5e1] px-4 py-3 text-[#1e293b] placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#2563eb]/20 focus:border-[#2563eb]">
+                                        <p class="text-[#dc2626] text-sm mt-2 hidden" data-error-for="email"></p>
+                                    </div>
+
+                                    <div>
+                                        <label for="waitlist-description" class="block text-sm font-semibold text-[#1e293b] mb-2">
+                                            How do you plan to use DuckGreSQL?
+                                        </label>
+                                        <textarea id="waitlist-description" name="description" required minlength="10"
+                                            maxlength="2000" rows="4"
+                                            placeholder="Tell us about your use case..."
+                                            class="w-full rounded-lg border border-[#cbd5e1] px-4 py-3 text-[#1e293b] placeholder:text-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#2563eb]/20 focus:border-[#2563eb]"></textarea>
+                                        <p class="text-[#dc2626] text-sm mt-2 hidden" data-error-for="description"></p>
+                                    </div>
+
+                                    <p id="waitlist-general-error" class="text-[#dc2626] text-sm hidden"></p>
+
+                                    <button id="waitlist-submit" type="submit"
+                                        class="w-full bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-6 py-3 rounded-lg font-semibold transition-all">
+                                        Join the waitlist
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div>
+                    <footer class="code-section bg-[#0f172a] border-t border-[#334155]" id=global-footer>
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+
+                                <div class="col-span-2 md:col-span-4 lg:col-span-1 mb-8 lg:mb-0">
+                                    <a href=/ class="inline-block mb-4">
+                                        <img src="images/logo.avif" alt=Duckgresql class=h-20
+                                            data-logo='{"id":"logo","src":"upload","type":"logo"}'
+                                            style="background-blend-mode:normal!important;background-clip:content-box!important;background-position:50% 50%!important;background-color:rgba(0,0,0,0)!important;background-image:var(--sf-img-150)!important;background-size:100% 100%!important;background-origin:content-box!important;background-repeat:no-repeat!important">
+                                    </a>
+                                    <p class="text-[#64748b] text-sm mb-6 max-w-xs">
+                                        Unified SQL platform combining DuckDB for analytics and PostgreSQL for
+                                        transactions.
+                                    </p>
+                                    <div class="flex items-center gap-4">
+                                        <a href=# class="text-[#64748b] hover:text-[#2563eb] transition-colors">
+                                            <i class="fa-brands fa-twitter text-xl" aria-hidden=true></i>
+                                        </a>
+                                        <a href=# class="text-[#64748b] hover:text-[#2563eb] transition-colors">
+                                            <i class="fa-brands fa-github text-xl" aria-hidden=true></i>
+                                        </a>
+                                        <a href=# class="text-[#64748b] hover:text-[#2563eb] transition-colors">
+                                            <i class="fa-brands fa-linkedin text-xl" aria-hidden=true></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h4 class="text-white font-semibold mb-4">Product</h4>
+                                    <ul class=space-y-3>
+                                        <li>
+                                            <a href="#features"
+                                                class="text-[#64748b] hover:text-white transition-colors text-sm">Features</a>
+                                        </li>
+                                        <li>
+                                            <a href=#use-cases
+                                                class="text-[#64748b] hover:text-white transition-colors text-sm">Use
+                                                Cases</a>
+                                        </li>
+                                        <li>
+                                            <a href=/comparison
+                                                class="text-[#64748b] hover:text-white transition-colors text-sm">Comparison</a>
+                                        </li>
+                                        <li>
+                                            <a href=/security
+                                                class="text-[#64748b] hover:text-white transition-colors text-sm">Security</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <h4 class="text-white font-semibold mb-4">Resources</h4>
+                                    <ul class=space-y-3>
+                                        <li>
+                                            <a href=/api
+                                                class="text-[#64748b] hover:text-white transition-colors text-sm">API
+                                                Reference</a>
+                                        </li>
+                                        <li>
+                                            <a href=/blog
+                                                class="text-[#64748b] hover:text-white transition-colors text-sm">Blog</a>
+                                        </li>
+                                        <li>
+                                            <a href=/faq
+                                                class="text-[#64748b] hover:text-white transition-colors text-sm">FAQ</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                                    <ul class=space-y-3>
+                                        <li>
+                                            <a href=/about
+                                                class="text-[#64748b] hover:text-white transition-colors text-sm">About</a>
+                                        </li>
+                                        <li>
+                                            <a href=/contact
+                                                class="text-[#64748b] hover:text-white transition-colors text-sm">Contact</a>
+                                        </li>
+                                        <li>
+                                            <a href=#
+                                                class="text-[#64748b] hover:text-white transition-colors text-sm">Careers</a>
+                                        </li>
+                                        <li>
+                                            <a href=#
+                                                class="text-[#64748b] hover:text-white transition-colors text-sm">Press
+                                                Kit</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <h4 class="text-white font-semibold mb-4">Legal</h4>
+                                    <ul class=space-y-3>
+                                        <li>
+                                            <a href=#
+                                                class="text-[#64748b] hover:text-white transition-colors text-sm">Privacy
+                                                Policy</a>
+                                        </li>
+                                        <li>
+                                            <a href=#
+                                                class="text-[#64748b] hover:text-white transition-colors text-sm">Terms
+                                                of Service</a>
+                                        </li>
+                                        <li>
+                                            <a href=#
+                                                class="text-[#64748b] hover:text-white transition-colors text-sm">Cookie
+                                                Policy</a>
+                                        </li>
+                                        <li>
+                                            <a href=#
+                                                class="text-[#64748b] hover:text-white transition-colors text-sm">GDPR</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div
+                                class="mt-12 pt-8 border-t border-[#334155] flex flex-col md:flex-row items-center justify-between gap-4">
+                                <p class="text-[#64748b] text-sm">
+                                    © 2026 Duckgresql. All rights reserved.
+                                </p>
+                                <div class="flex items-center gap-6">
+                                    <a href=/login
+                                        class="text-[#64748b] hover:text-white transition-colors text-sm">Login</a>
+                                    <a href="#join"
+                                        class="text-[#2563eb] font-semibold hover:text-[#1d4ed8] transition-colors text-sm">Join
+                                        Waiting List</a>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+        <div id="clerk-components"></div>
+        <script>
+            (function () {
+                var form = document.getElementById("waitlist-form");
+                if (!form) return;
+
+                var successBox = document.getElementById("waitlist-success");
+                var submitButton = document.getElementById("waitlist-submit");
+                var generalError = document.getElementById("waitlist-general-error");
+                var fieldErrorNodes = {
+                    name: form.querySelector('[data-error-for="name"]'),
+                    company: form.querySelector('[data-error-for="company"]'),
+                    email: form.querySelector('[data-error-for="email"]'),
+                    description: form.querySelector('[data-error-for="description"]'),
+                };
+
+                function setFieldError(field, message) {
+                    var input = form.querySelector('[name="' + field + '"]');
+                    var error = fieldErrorNodes[field];
+                    if (!input || !error) return;
+
+                    error.textContent = message || "";
+                    error.classList.toggle("hidden", !message);
+                    input.style.borderColor = message ? "#dc2626" : "";
+                }
+
+                function clearErrors() {
+                    setFieldError("name", "");
+                    setFieldError("company", "");
+                    setFieldError("email", "");
+                    setFieldError("description", "");
+                    generalError.textContent = "";
+                    generalError.classList.add("hidden");
+                }
+
+                function validate(payload) {
+                    var isValid = true;
+                    if (payload.name.length < 2 || payload.name.length > 255) {
+                        setFieldError("name", "Name must be between 2 and 255 characters.");
+                        isValid = false;
+                    }
+                    if (payload.company.length < 2 || payload.company.length > 255) {
+                        setFieldError("company", "Company name must be between 2 and 255 characters.");
+                        isValid = false;
+                    }
+                    if (!payload.email || payload.email.indexOf("@") < 1 || payload.email.lastIndexOf(".") <= payload.email.indexOf("@") + 1) {
+                        setFieldError("email", "Please enter a valid email address.");
+                        isValid = false;
+                    }
+                    if (payload.description.length < 10 || payload.description.length > 2000) {
+                        setFieldError("description", "Please describe your use case in 10 to 2000 characters.");
+                        isValid = false;
+                    }
+                    return isValid;
+                }
+
+                form.addEventListener("submit", async function (event) {
+                    event.preventDefault();
+                    clearErrors();
+
+                    var payload = {
+                        name: ((form.elements.name && form.elements.name.value) || "").trim(),
+                        company: ((form.elements.company && form.elements.company.value) || "").trim(),
+                        email: ((form.elements.email && form.elements.email.value) || "").trim().toLowerCase(),
+                        description: ((form.elements.description && form.elements.description.value) || "").trim(),
+                    };
+
+                    if (!validate(payload)) return;
+
+                    submitButton.disabled = true;
+                    submitButton.textContent = "Submitting...";
+
+                    try {
+                        var response = await fetch(form.getAttribute("action") || "/api/waitlist", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify(payload),
+                        });
+
+                        var result = await response.json().catch(function () { return null; });
+                        if (!response.ok) {
+                            var message = result && result.error ? result.error : "We couldn't submit your request. Please try again.";
+                            if (message.toLowerCase().indexOf("email") >= 0) {
+                                setFieldError("email", message);
+                            } else {
+                                generalError.textContent = message;
+                                generalError.classList.remove("hidden");
+                            }
+                            return;
+                        }
+
+                        form.classList.add("hidden");
+                        successBox.classList.remove("hidden");
+                    } catch (error) {
+                        generalError.textContent = "Network error while submitting. Please try again.";
+                        generalError.classList.remove("hidden");
+                    } finally {
+                        submitButton.disabled = false;
+                        submitButton.textContent = "Join the waitlist";
+                    }
+                });
+            })();
+        </script>
+</body>
+
+</html>
