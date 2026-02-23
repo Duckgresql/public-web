@@ -1,6 +1,6 @@
 # Duckgresql — Public Website
 
-Source for the **Duckgresql** public site: [duckgresql.io](https://duckgresql.io).
+Source for the **Duckgresql** public site: [duckgresql.cloud](https://duckgresql.cloud).
 
 ## What is Duckgresql?
 
@@ -29,7 +29,7 @@ Source for the **Duckgresql** public site: [duckgresql.io](https://duckgresql.io
 
 ## Join the waiting list
 
-Duckgresql is in private beta. Sign up at [duckgresql.io#join](https://duckgresql.io#join) to get notified when access is available.
+Duckgresql is in private beta. Sign up at [duckgresql.cloud#join](https://duckgresql.cloud#join) to get notified when access is available.
 
 ---
 
