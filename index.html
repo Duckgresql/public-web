@@ -835,9 +835,9 @@
                         var response = await fetch(form.getAttribute("action") || "/api/waitlist", {
                             method: "POST",
                             headers: {
-                                "Content-Type": "application/json",
+                                "Content-Type": "application/x-www-form-urlencoded",
                             },
-                            body: JSON.stringify(payload),
+                            body: new URLSearchParams(payload).toString(),
                         });
 
                         var result = await response.json().catch(function () { return null; });
