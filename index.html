@@ -55,15 +55,15 @@
 
 <title>Duckgresql - Isolated Engines, Collaborative Data Platform</title>
 <meta name="description"
-    content="Duckgresql isolates PostgreSQL for OLTP and DuckDB for OLAP, then connects both so transactional and analytical workloads collaborate in one managed platform.">
+    content="Duckgresql isolates PostgreSQL for OLTP and DuckDB for OLAP, then connects both so transactional and analytical workloads collaborate in one platform.">
 <meta name="language" content="en">
 <meta property="og:title" content="Duckgresql - Isolated Engines, Collaborative Data Platform">
 <meta property="og:description"
-    content="Duckgresql isolates PostgreSQL for OLTP and DuckDB for OLAP, then connects both so transactional and analytical workloads collaborate in one managed platform.">
+    content="Duckgresql isolates PostgreSQL for OLTP and DuckDB for OLAP, then connects both so transactional and analytical workloads collaborate in one platform.">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Duckgresql - Isolated Engines, Collaborative Data Platform">
 <meta name="twitter:description"
-    content="Duckgresql isolates PostgreSQL for OLTP and DuckDB for OLAP, then connects both so transactional and analytical workloads collaborate in one managed platform.">
+    content="Duckgresql isolates PostgreSQL for OLTP and DuckDB for OLAP, then connects both so transactional and analytical workloads collaborate in one platform.">
 <link rel="icon" type="image/webp" href="images/icon.webp">
 <link rel="shortcut icon" type="image/webp" href="images/icon.webp">
 <link rel="apple-touch-icon" href="images/icon.webp">
@@ -74,7 +74,7 @@
             <div class=[font-family:var(--font-family-body)]>
                 <div>
                     <header
-                        class="fixed top-0 left-0 right-0 z-50 bg-[#0f172a]/95 backdrop-blur-md border-b border-[#334155] code-section"
+                        class="fixed top-0 left-0 right-0 z-50 bg-[#0f172a] border-b border-[#334155] code-section"
                         data-landingsite-section=header id=global-header>
                         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                             <div class="flex items-center justify-between h-20">
@@ -90,21 +90,28 @@
                                     <a href=#use-cases
                                         class="text-white hover:text-[#2563eb] transition-colors font-medium">Use
                                         Cases</a>
+                                    <a href="#pricing"
+                                        class="text-white hover:text-[#2563eb] transition-colors font-medium">Pricing</a>
                                     <a href="#join"
                                         class="bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-6 py-3 rounded-lg font-semibold transition-all hover:shadow-lg hover:shadow-[#2563eb]/25">
                                         Join Waiting List
                                     </a>
                                 </nav>
 
-                                <button class="lg:hidden text-white p-2 sf-hidden" data-landingsite-mobile-menu-toggle>
-
+                                <button class="lg:hidden text-white p-2" data-landingsite-mobile-menu-toggle onclick="document.querySelector('[data-landingsite-mobile-menu]').classList.toggle('hidden')">
+                                    <i class="fa-solid fa-bars text-xl" aria-hidden=true></i>
                                 </button>
                             </div>
                         </div>
 
-                        <div class="lg:hidden hidden bg-[#0f172a] border-t border-[#334155] sf-hidden"
+                        <div class="lg:hidden hidden bg-[#0f172a] border-t border-[#334155]"
                             data-landingsite-mobile-menu>
-
+                            <div class="px-4 py-4 space-y-3">
+                                <a href="#features" class="block text-white hover:text-[#2563eb] transition-colors font-medium py-2">Features</a>
+                                <a href="#use-cases" class="block text-white hover:text-[#2563eb] transition-colors font-medium py-2">Use Cases</a>
+                                <a href="#pricing" class="block text-white hover:text-[#2563eb] transition-colors font-medium py-2">Pricing</a>
+                                <a href="#join" class="block bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-6 py-3 rounded-lg font-semibold transition-all text-center">Join Waiting List</a>
+                            </div>
                         </div>
                     </header>
                 </div>
@@ -133,7 +140,7 @@
                             <div
                                 class="inline-flex items-center gap-2 bg-[#2563eb]/10 border border-[#2563eb]/30 rounded-full px-4 py-2 mb-8">
                                 <span class="flex h-2 w-2 rounded-full bg-[#10b981] animate-pulse"></span>
-                                <span class="text-[#dbeafe] text-sm font-medium">Now available for early access</span>
+                                <span class="text-[#dbeafe] text-sm font-medium">Now in private beta</span>
                             </div>
 
                             <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
@@ -146,7 +153,7 @@
                             <p class="text-xl sm:text-2xl text-[#94a3b8] max-w-3xl mx-auto mb-10 leading-relaxed">
                                 Run <span class="text-white font-semibold">PostgreSQL</span> for OLTP and
                                 <span class="text-white font-semibold">DuckDB</span> for OLAP in isolated
-                                workloads that stay connected and collaborate in one managed platform.
+                                workloads that stay connected and collaborate in one platform.
                             </p>
 
                             <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
@@ -169,7 +176,7 @@
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <i class="fa-solid fa-cloud text-[#8b5cf6]" aria-hidden=true></i>
-                                    <span class="text-sm font-medium">Fully managed</span>
+                                    <span class="text-sm font-medium">SaaS or self-hosted</span>
                                 </div>
                             </div>
                         </div>
@@ -188,28 +195,48 @@
                                 <span
                                     class="inline-block px-4 py-1 bg-[#fef3c7] text-[#92400e] rounded-full text-sm font-semibold mb-4">PROBLEM</span>
                                 <h2 class="text-4xl font-bold text-[#1e293b] mb-4">
-                                    When Postgres Does Everything, Both Workloads Suffer
+                                    Two Problems, One Platform
                                 </h2>
                                 <p class="text-xl text-[#64748b] max-w-3xl mx-auto">
-                                    OLTP and OLAP fight for resources when they run on one engine.
+                                    Each engine excels at what it was built for — but falls short where the other shines.
                                 </p>
                             </div>
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <div class="p-6 rounded-xl border border-[#e2e8f0] bg-[#f8fafc]">
-                                    <h3 class="text-lg font-bold text-[#1e293b] mb-2">Lock contention and slow writes</h3>
-                                    <p class="text-[#64748b]">Analytics queries interfere with transactional throughput.</p>
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <div class="p-8 rounded-2xl border border-[#dbeafe] bg-[#eff6ff]">
+                                    <div class="flex items-center gap-4 mb-6">
+                                        <div class="w-12 h-12 bg-[#2563eb]/10 rounded-lg flex items-center justify-center">
+                                            <i class="fa-solid fa-database text-xl text-[#2563eb]" aria-hidden=true></i>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-[#1e293b]">PostgreSQL wasn't built for analytics</h3>
+                                    </div>
+                                    <ul class="space-y-4">
+                                        <li class="flex items-start gap-3 text-[#64748b]">
+                                            <i class="fa-solid fa-xmark text-[#ef4444] mt-1" aria-hidden=true></i>
+                                            <span>Row-oriented storage is inefficient for large analytical scans</span>
+                                        </li>
+                                        <li class="flex items-start gap-3 text-[#64748b]">
+                                            <i class="fa-solid fa-xmark text-[#ef4444] mt-1" aria-hidden=true></i>
+                                            <span>Large aggregations are slow without columnar storage</span>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="p-6 rounded-xl border border-[#e2e8f0] bg-[#f8fafc]">
-                                    <h3 class="text-lg font-bold text-[#1e293b] mb-2">Scaling costs increase quickly</h3>
-                                    <p class="text-[#64748b]">You overprovision OLTP infrastructure for OLAP spikes.</p>
-                                </div>
-                                <div class="p-6 rounded-xl border border-[#e2e8f0] bg-[#f8fafc]">
-                                    <h3 class="text-lg font-bold text-[#1e293b] mb-2">Warehouse pipelines become mandatory</h3>
-                                    <p class="text-[#64748b]">ETL jobs and duplicated data add lag and complexity.</p>
-                                </div>
-                                <div class="p-6 rounded-xl border border-[#e2e8f0] bg-[#f8fafc]">
-                                    <h3 class="text-lg font-bold text-[#1e293b] mb-2">A single engine is a compromise</h3>
-                                    <p class="text-[#64748b]">One workload gets priority while the other degrades.</p>
+                                <div class="p-8 rounded-2xl border border-[#fef3c7] bg-[#fffbeb]">
+                                    <div class="flex items-center gap-4 mb-6">
+                                        <div class="w-12 h-12 bg-[#f59e0b]/10 rounded-lg flex items-center justify-center">
+                                            <i class="fa-solid fa-chart-line text-xl text-[#f59e0b]" aria-hidden=true></i>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-[#1e293b]">DuckDB wasn't built for concurrency</h3>
+                                    </div>
+                                    <ul class="space-y-4">
+                                        <li class="flex items-start gap-3 text-[#64748b]">
+                                            <i class="fa-solid fa-xmark text-[#ef4444] mt-1" aria-hidden=true></i>
+                                            <span>Single-writer model limits concurrent write throughput</span>
+                                        </li>
+                                        <li class="flex items-start gap-3 text-[#64748b]">
+                                            <i class="fa-solid fa-xmark text-[#ef4444] mt-1" aria-hidden=true></i>
+                                            <span>No built-in horizontal scaling for read-heavy workloads</span>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -336,14 +363,14 @@
                                     class="group p-8 rounded-2xl bg-[#eff6ff] border border-[#dbeafe] hover:border-[#2563eb] transition-all hover:shadow-xl hover:shadow-[#2563eb]/10">
                                     <div
                                         class="w-14 h-14 bg-[#2563eb] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                                        <i class="fa-solid fa-code text-2xl text-white" aria-hidden=true></i>
+                                        <i class="fa-solid fa-link text-2xl text-white" aria-hidden=true></i>
                                     </div>
                                     <h3 class="text-xl font-bold text-[#1e293b] mb-3">
-                                        Driver & SDK Compatibility
+                                        Cross-Engine Queries
                                     </h3>
                                     <p class=text-[#64748b]>
-                                        Use standard PostgreSQL drivers, and work with an SDK compatible with
-                                        the DuckDB API for analytical workloads.
+                                        Join tables across DuckDB and PostgreSQL in a single query.
+                                        Analyze transactional data without moving it to a separate system.
                                     </p>
                                 </div>
 
@@ -353,10 +380,10 @@
                                         class="w-14 h-14 bg-[#f59e0b] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                                         <i class="fa-solid fa-server text-2xl text-white" aria-hidden=true></i>
                                     </div>
-                                    <h3 class="text-xl font-bold text-[#1e293b] mb-3">Fully Managed</h3>
+                                    <h3 class="text-xl font-bold text-[#1e293b] mb-3">Your Infrastructure, Your Rules</h3>
                                     <p class=text-[#64748b]>
-                                        We handle scaling, backups, security, and maintenance. Deploy in
-                                        seconds and focus on building your application.
+                                        Deploy on your own servers for full control, or let us manage it
+                                        for you. Same platform, your choice.
                                     </p>
                                 </div>
 
@@ -481,26 +508,25 @@
                                         <div class="flex items-center gap-4 mb-6">
                                             <div
                                                 class="w-12 h-12 bg-[#10b981]/20 rounded-lg flex items-center justify-center">
-                                                <i class="fa-solid fa-mobile-screen text-xl text-[#10b981]"
+                                                <i class="fa-solid fa-layer-group text-xl text-[#10b981]"
                                                     aria-hidden=true></i>
                                             </div>
-                                            <h3 class="text-xl font-bold text-white">Mobile App Backend</h3>
+                                            <h3 class="text-xl font-bold text-white">SaaS Application Backend</h3>
                                         </div>
                                         <p class="text-[#94a3b8] mb-6">
-                                            Power your mobile app with PostgreSQL for user data and
-                                            transactions, while running complex analytics behind the scenes with
-                                            DuckDB.
+                                            Use PostgreSQL for your application's transactional data and DuckDB
+                                            for usage analytics and reporting — query both from one platform.
                                         </p>
                                         <ul class=space-y-2>
                                             <li class="flex items-center gap-2 text-[#64748b] text-sm">
                                                 <i class="fa-solid fa-check text-[#10b981] text-xs"
                                                     aria-hidden=true></i>
-                                                <span>High-concurrency support</span>
+                                                <span>Cross-engine joins in a single query</span>
                                             </li>
                                             <li class="flex items-center gap-2 text-[#64748b] text-sm">
                                                 <i class="fa-solid fa-check text-[#10b981] text-xs"
                                                     aria-hidden=true></i>
-                                                <span>Automatic read/write splitting</span>
+                                                <span>Dedicated engines for each workload</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -515,27 +541,28 @@
                                         <div class="flex items-center gap-4 mb-6">
                                             <div
                                                 class="w-12 h-12 bg-[#f59e0b]/20 rounded-lg flex items-center justify-center">
-                                                <i class="fa-solid fa-warehouse text-xl text-[#f59e0b]"
+                                                <i class="fa-solid fa-chart-bar text-xl text-[#f59e0b]"
                                                     aria-hidden=true></i>
                                             </div>
                                             <h3 class="text-xl font-bold text-white">
-                                                Data Warehouse Alternative
+                                                Embedded Analytics
                                             </h3>
                                         </div>
                                         <p class="text-[#94a3b8] mb-6">
-                                            Use it as an alternative to a separate warehouse when your team
-                                            wants analytics over operational data with less complexity.
+                                            Build analytics features directly into your application — dashboards,
+                                            reports, and real-time insights powered by DuckDB, with PostgreSQL
+                                            handling app state.
                                         </p>
                                         <ul class=space-y-2>
                                             <li class="flex items-center gap-2 text-[#64748b] text-sm">
                                                 <i class="fa-solid fa-check text-[#10b981] text-xs"
                                                     aria-hidden=true></i>
-                                                <span>Lower infrastructure and pipeline overhead</span>
+                                                <span>In-app reporting without external tools</span>
                                             </li>
                                             <li class="flex items-center gap-2 text-[#64748b] text-sm">
                                                 <i class="fa-solid fa-check text-[#10b981] text-xs"
                                                     aria-hidden=true></i>
-                                                <span>Fewer ETL steps and data copies</span>
+                                                <span>Sub-second analytical queries</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -550,31 +577,102 @@
                                         <div class="flex items-center gap-4 mb-6">
                                             <div
                                                 class="w-12 h-12 bg-[#ec4899]/20 rounded-lg flex items-center justify-center">
-                                                <i class="fa-solid fa-robot text-xl text-[#ec4899]"
+                                                <i class="fa-solid fa-arrow-right-arrow-left text-xl text-[#ec4899]"
                                                     aria-hidden=true></i>
                                             </div>
-                                            <h3 class="text-xl font-bold text-white">AI/ML Feature Store (Coming Soon)</h3>
+                                            <h3 class="text-xl font-bold text-white">Migrate from PostgreSQL, Gradually</h3>
                                         </div>
                                         <p class="text-[#94a3b8] mb-6">
-                                            Planned capability: store training data in PostgreSQL, compute
-                                            features with DuckDB, and serve predictions from one platform.
+                                            When your PostgreSQL can't keep up with analytical workloads, move
+                                            them to DuckDB without a full rewrite. Keep transactional data in
+                                            PostgreSQL and migrate analytics incrementally.
                                         </p>
                                         <ul class=space-y-2>
                                             <li class="flex items-center gap-2 text-[#64748b] text-sm">
                                                 <i class="fa-solid fa-check text-[#10b981] text-xs"
                                                     aria-hidden=true></i>
-                                                <span>Feature engineering at scale</span>
+                                                <span>Cross-engine queries during the transition</span>
                                             </li>
                                             <li class="flex items-center gap-2 text-[#64748b] text-sm">
                                                 <i class="fa-solid fa-check text-[#10b981] text-xs"
                                                     aria-hidden=true></i>
-                                                <span>Online/offline feature consistency</span>
+                                                <span>No big-bang migration required</span>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
 
+                        </div>
+                    </section>
+                    <section class="code-section py-24 bg-[#eff6ff]" id="pricing">
+                        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div class="text-center mb-14">
+                                <span
+                                    class="inline-block px-4 py-1 bg-[#2563eb]/10 text-[#2563eb] rounded-full text-sm font-semibold mb-4">PRICING</span>
+                                <h2 class="text-4xl font-bold text-[#1e293b] mb-4">
+                                    Flexible Pricing, Coming Soon
+                                </h2>
+                                <p class="text-xl text-[#64748b] max-w-2xl mx-auto">
+                                    We're finalizing our plans. Two options to fit the way your team works.
+                                </p>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <div class="relative bg-white rounded-2xl p-8 border border-[#e2e8f0] shadow-lg">
+                                    <span class="inline-block px-3 py-1 bg-[#dbeafe] text-[#2563eb] rounded-full text-xs font-semibold mb-6">Coming soon</span>
+                                    <div class="flex items-center gap-4 mb-4">
+                                        <div class="w-12 h-12 bg-[#2563eb]/10 rounded-xl flex items-center justify-center">
+                                            <i class="fa-solid fa-cloud text-xl text-[#2563eb]" aria-hidden=true></i>
+                                        </div>
+                                        <h3 class="text-2xl font-bold text-[#1e293b]">SaaS</h3>
+                                    </div>
+                                    <p class="text-[#64748b] mb-6">
+                                        Fully managed platform. We handle infrastructure, scaling, backups, and
+                                        updates so you can focus on your application.
+                                    </p>
+                                    <ul class="space-y-3">
+                                        <li class="flex items-center gap-3 text-[#64748b]">
+                                            <i class="fa-solid fa-check text-[#10b981]" aria-hidden=true></i>
+                                            <span>Zero infrastructure management</span>
+                                        </li>
+                                        <li class="flex items-center gap-3 text-[#64748b]">
+                                            <i class="fa-solid fa-check text-[#10b981]" aria-hidden=true></i>
+                                            <span>Plans based on cluster size</span>
+                                        </li>
+                                        <li class="flex items-center gap-3 text-[#64748b]">
+                                            <i class="fa-solid fa-check text-[#10b981]" aria-hidden=true></i>
+                                            <span>Automatic updates and new features</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="relative bg-white rounded-2xl p-8 border border-[#e2e8f0] shadow-lg">
+                                    <span class="inline-block px-3 py-1 bg-[#dbeafe] text-[#2563eb] rounded-full text-xs font-semibold mb-6">Coming soon</span>
+                                    <div class="flex items-center gap-4 mb-4">
+                                        <div class="w-12 h-12 bg-[#8b5cf6]/10 rounded-xl flex items-center justify-center">
+                                            <i class="fa-solid fa-server text-xl text-[#8b5cf6]" aria-hidden=true></i>
+                                        </div>
+                                        <h3 class="text-2xl font-bold text-[#1e293b]">Self-Hosted</h3>
+                                    </div>
+                                    <p class="text-[#64748b] mb-6">
+                                        License and install on your own infrastructure. Full control over
+                                        where your data lives and how the platform runs.
+                                    </p>
+                                    <ul class="space-y-3">
+                                        <li class="flex items-center gap-3 text-[#64748b]">
+                                            <i class="fa-solid fa-check text-[#10b981]" aria-hidden=true></i>
+                                            <span>Deploy on your own servers</span>
+                                        </li>
+                                        <li class="flex items-center gap-3 text-[#64748b]">
+                                            <i class="fa-solid fa-check text-[#10b981]" aria-hidden=true></i>
+                                            <span>Complete data sovereignty</span>
+                                        </li>
+                                        <li class="flex items-center gap-3 text-[#64748b]">
+                                            <i class="fa-solid fa-check text-[#10b981]" aria-hidden=true></i>
+                                            <span>Installation assistance and support plans</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </section>
                     <section class="code-section relative py-24 bg-[#2563eb] overflow-hidden" id=simcn2h>
@@ -691,18 +789,11 @@
                                             style="background-blend-mode:normal!important;background-clip:content-box!important;background-position:50% 50%!important;background-color:rgba(0,0,0,0)!important;background-image:var(--sf-img-150)!important;background-size:100% 100%!important;background-origin:content-box!important;background-repeat:no-repeat!important">
                                     </a>
                                     <p class="text-[#64748b] text-sm mb-6 max-w-xs">
-                                        Unified SQL platform combining DuckDB for analytics and PostgreSQL for
-                                        transactions.
+                                        Managed DuckDB + PostgreSQL platform with cross-engine queries.
                                     </p>
                                     <div class="flex items-center gap-4">
-                                        <a href=# class="text-[#64748b] hover:text-[#2563eb] transition-colors">
-                                            <i class="fa-brands fa-twitter text-xl" aria-hidden=true></i>
-                                        </a>
-                                        <a href=# class="text-[#64748b] hover:text-[#2563eb] transition-colors">
-                                            <i class="fa-brands fa-github text-xl" aria-hidden=true></i>
-                                        </a>
-                                        <a href=# class="text-[#64748b] hover:text-[#2563eb] transition-colors">
-                                            <i class="fa-brands fa-linkedin text-xl" aria-hidden=true></i>
+                                        <a href="https://x.com/duckgresql" class="text-[#64748b] hover:text-[#2563eb] transition-colors" target="_blank" rel="noopener noreferrer">
+                                            <i class="fa-brands fa-x-twitter text-xl" aria-hidden=true></i>
                                         </a>
                                     </div>
                                 </div>
@@ -719,6 +810,10 @@
                                                 <a href=#use-cases
                                                     class="text-[#64748b] hover:text-white transition-colors text-sm">Use
                                                     Cases</a>
+                                            </li>
+                                            <li>
+                                                <a href="#pricing"
+                                                    class="text-[#64748b] hover:text-white transition-colors text-sm">Pricing</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -759,7 +854,6 @@
                 </div>
             </div>
         </div>
-        <div id="clerk-components"></div>
         <script>
             (function () {
                 var form = document.getElementById("waitlist-form");

@@ -64,7 +64,10 @@
         <section class="mt-10 space-y-4">
             <h2 class="text-2xl font-semibold text-white [font-family:'Space_Grotesk']">4. Where Data Is Stored and Processed</h2>
             <p class="text-[#cbd5e1] leading-7">
-                Primary hosting: OVHcloud infrastructure in the Paris region (France).<br>
+                Infrastructure is distributed across multiple providers:<br>
+                OVHcloud (France) for frontend applications and platform configuration database;<br>
+                Hetzner (Germany) for DuckDB compute and storage;<br>
+                Neon for managed tenant PostgreSQL instances.<br>
                 Email delivery provider: Resend.
             </p>
             <p class="text-[#cbd5e1] leading-7">
