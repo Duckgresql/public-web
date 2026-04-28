@@ -387,7 +387,7 @@ tailwind.config = {
                         <g>
                             <rect x="370" y="20" width="240" height="68" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
                             <text x="490" y="50" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="16" font-weight="700" fill="#0f172a">Your application</text>
-                            <text x="490" y="71" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#64748b">SDK · psql · ORM</text>
+                            <text x="490" y="71" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#64748b">Duckgresql SDK</text>
                         </g>
 
                         <!-- Single connection arrow -->
@@ -412,7 +412,8 @@ tailwind.config = {
                             <circle cx="130" cy="370" r="6" fill="#60a5fa"/>
                             <text x="146" y="375" font-family="JetBrains Mono, monospace" font-size="11" fill="#2563eb" letter-spacing="1">POSTGRES · OLTP</text>
                             <text x="120" y="408" font-family="Inter Tight, sans-serif" font-size="18" font-weight="700" fill="#0f172a">Transactional state</text>
-                            <text x="120" y="432" font-family="Inter, sans-serif" font-size="13" fill="#475569">ACID writes · row storage · indexes · extensions</text>
+                            <text x="120" y="430" font-family="Inter, sans-serif" font-size="13" fill="#475569">ACID writes · row storage</text>
+                            <text x="120" y="447" font-family="Inter, sans-serif" font-size="13" fill="#475569">indexes · extensions</text>
                         </g>
 
                         <!-- DuckDB engine -->
@@ -421,7 +422,8 @@ tailwind.config = {
                             <circle cx="610" cy="370" r="6" fill="#fbbf24"/>
                             <text x="626" y="375" font-family="JetBrains Mono, monospace" font-size="11" fill="#b45309" letter-spacing="1">DUCKDB · OLAP</text>
                             <text x="600" y="408" font-family="Inter Tight, sans-serif" font-size="18" font-weight="700" fill="#0f172a">Analytical scale</text>
-                            <text x="600" y="432" font-family="Inter, sans-serif" font-size="13" fill="#475569">Columnar · parallel · sub-second aggregates</text>
+                            <text x="600" y="430" font-family="Inter, sans-serif" font-size="13" fill="#475569">Columnar storage · parallel</text>
+                            <text x="600" y="447" font-family="Inter, sans-serif" font-size="13" fill="#475569">sub-second aggregates</text>
                         </g>
 
                         <!-- Cross-engine link -->
@@ -576,9 +578,9 @@ tailwind.config = {
                         </span>
                         <span class="mono text-[0.7rem] uppercase tracking-wider text-slate-500">04</span>
                     </div>
-                    <h3 class="font-display text-lg font-semibold text-white">Standard Postgres wire</h3>
+                    <h3 class="font-display text-lg font-semibold text-white">Drop-in Postgres for OLTP</h3>
                     <p class="mt-2.5 text-slate-400 text-[0.92rem] leading-relaxed">
-                        Connect with any Postgres driver, ORM, or BI tool you already use. No proprietary protocol.
+                        Use any Postgres driver, ORM, or BI tool to reach the transactional side. Cross-engine queries run through the SDK.
                     </p>
                 </div>
 
