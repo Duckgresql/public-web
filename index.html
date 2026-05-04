@@ -86,9 +86,10 @@ tailwind.config = {
     .btn-primary {
         background: #f5f5f7;
         color: #0a0a0c;
-        transition: transform .15s ease, background .2s ease, box-shadow .2s ease;
+        transition: transform .15s ease, background .2s ease, box-shadow .2s ease, border-color .2s ease;
+        border: 1px solid transparent;
     }
-    .btn-primary:hover { background: #ffffff; box-shadow: 0 10px 30px -10px rgba(255,255,255,0.18); transform: translateY(-1px); }
+    .btn-primary:hover { background: #ffffff; border-color: rgba(251,191,36,0.4); box-shadow: 0 10px 30px -10px rgba(251,191,36,0.25); transform: translateY(-1px); }
 
     .btn-ghost {
         background: rgba(255,255,255,0.04);
@@ -96,7 +97,7 @@ tailwind.config = {
         border: 1px solid rgba(255,255,255,0.10);
         transition: background .2s ease, border-color .2s ease;
     }
-    .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.18); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(251,191,36,0.30); }
 
     /* Card lift */
     .card-lift {
@@ -109,20 +110,39 @@ tailwind.config = {
         background: linear-gradient(180deg, #0e0e14 0%, #0a0a0e 100%);
         border: 1px solid rgba(255,255,255,0.07);
     }
+    .code-block.code-after {
+        border-color: rgba(251,191,36,0.28);
+        box-shadow: 0 0 0 1px rgba(251,191,36,0.06), 0 30px 80px -30px rgba(0,0,0,0.6);
+    }
     .code-window-bar {
         border-bottom: 1px solid rgba(255,255,255,0.06);
         background: rgba(255,255,255,0.02);
     }
-    pre.code, code.code { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.9rem; line-height: 1.65; }
+    pre.code, code.code { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.9rem; line-height: 1.7; }
     .tok-kw   { color: #c4b5fd; }   /* keyword */
     .tok-fn   { color: #93c5fd; }   /* function/identifier */
+    .tok-mod  { color: #f0abfc; }   /* module name */
     .tok-str  { color: #86efac; }   /* string */
     .tok-num  { color: #fcd34d; }   /* number */
     .tok-cmt  { color: #71717a; font-style: italic; }
-    .tok-pg   { color: #93c5fd; }   /* postgres ident */
-    .tok-dd   { color: #fcd34d; }   /* duckdb ident */
     .tok-op   { color: #cbd5e1; }
     .tok-id   { color: #e5e7eb; }
+    .tok-arg  { color: #fde68a; }   /* keyword arg name */
+
+    /* Copy button */
+    .copy-btn {
+        position: absolute; top: 10px; right: 12px;
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 0.65rem; letter-spacing: 0.05em; text-transform: uppercase;
+        color: rgba(255,255,255,0.45);
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.08);
+        padding: 4px 10px; border-radius: 6px;
+        cursor: pointer;
+        transition: color .15s ease, background .15s ease, border-color .15s ease;
+    }
+    .copy-btn:hover { color: rgba(255,255,255,0.9); border-color: rgba(255,255,255,0.18); background: rgba(255,255,255,0.06); }
+    .copy-btn.copied { color: #fcd34d; border-color: rgba(251,191,36,0.45); }
 
     /* Section header eyebrow */
     .eyebrow {
@@ -142,10 +162,10 @@ tailwind.config = {
     }
 
     /* Focus states */
-    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
-        outline: 2px solid #60a5fa; outline-offset: 2px;
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+        outline: 2px solid #fbbf24; outline-offset: 2px;
     }
-    input:focus-visible, textarea:focus-visible { outline-offset: 0; }
+    input:focus-visible, textarea:focus-visible, select:focus-visible { outline-offset: 0; }
 
     /* Diagram styles */
     .diagram-box {
@@ -158,26 +178,42 @@ tailwind.config = {
     .reveal { opacity: 0; transform: translateY(8px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.in { opacity: 1; transform: none; }
 
+    /* Founder letter card */
+    .letter-card {
+        background: linear-gradient(180deg, #fafaf7 0%, #f4f4ef 100%);
+        border: 1px solid rgba(15,23,42,0.07);
+    }
+
+    /* Form select dark theme */
+    .form-select {
+        background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2010%206%22%3E%3Cpath%20fill%3D%22%2394a3b8%22%20d%3D%22M5%206L0%200h10z%22%2F%3E%3C%2Fsvg%3E");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        background-size: 10px 6px;
+        appearance: none;
+        -webkit-appearance: none;
+    }
+
     /* Hide tailwind CDN warning quirk on small screens */
     @media (max-width: 640px) {
         h1.display { letter-spacing: -0.035em; }
     }
 </style>
 
-<title>Duckgresql — Postgres for transactions. DuckDB for analytics.</title>
-<meta name="description" content="Duckgresql runs PostgreSQL and DuckDB as isolated engines that share one platform. Join transactional and analytical data in a single query — no ETL, no replicas, no glue code.">
+<title>Duckgresql — DuckDB for real applications</title>
+<meta name="description" content="DuckDB-compatible Python SDK with production-grade infrastructure. Drop-in remote execution for apps with concurrent users. Private beta — five design partner slots.">
 <meta name="language" content="en">
-<meta property="og:title" content="Duckgresql — Postgres for transactions. DuckDB for analytics.">
-<meta property="og:description" content="Run PostgreSQL and DuckDB side by side. Join across both in one query — no ETL, no replicas, no glue code.">
+<meta property="og:title" content="Duckgresql — DuckDB for real applications">
+<meta property="og:description" content="The performance of DuckDB. The reliability you'd expect from a database that runs in production. DuckDB-compatible Python SDK, remote execution.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Duckgresql — Postgres for transactions. DuckDB for analytics.">
-<meta name="twitter:description" content="Run PostgreSQL and DuckDB side by side. Join across both in one query — no ETL, no replicas, no glue code.">
+<meta name="twitter:title" content="Duckgresql — DuckDB for real applications">
+<meta name="twitter:description" content="The performance of DuckDB. The reliability you'd expect from a database that runs in production.">
 <link rel="icon" type="image/webp" href="images/icon.webp">
 <link rel="shortcut icon" type="image/webp" href="images/icon.webp">
 <link rel="apple-touch-icon" href="images/icon.webp">
 </head>
 
-<body class="h-full bg-ink-950 font-body text-slate-300 selection:bg-pg/30 selection:text-white">
+<body class="h-full bg-ink-950 font-body text-slate-300 selection:bg-duck/30 selection:text-white">
 
     <!-- Header -->
     <header class="fixed top-0 left-0 right-0 z-50 border-b border-transparent" id="global-header">
@@ -189,11 +225,12 @@ tailwind.config = {
                 </a>
 
                 <nav class="hidden lg:flex items-center gap-9">
+                    <a href="#sdk" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">The SDK</a>
+                    <a href="#why" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Why we built this</a>
                     <a href="#how" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">How it works</a>
-                    <a href="#features" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Features</a>
-                    <a href="#use-cases" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">Use cases</a>
-                    <a href="#join" class="btn-primary inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-lg">
-                        Request access
+                    <a href="#features" class="nav-link text-sm text-slate-400 hover:text-white transition-colors">What's in the SDK</a>
+                    <a href="#apply" class="btn-primary inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-lg">
+                        Apply
                         <i class="fa-solid fa-arrow-right text-[0.7rem]" aria-hidden="true"></i>
                     </a>
                 </nav>
@@ -206,10 +243,11 @@ tailwind.config = {
 
         <div class="lg:hidden hidden bg-ink-950/95 backdrop-blur-md border-t border-white/5" data-mobile-menu>
             <div class="px-4 py-4 space-y-1">
+                <a href="#sdk" class="block text-slate-300 hover:text-white py-2.5 text-sm">The SDK</a>
+                <a href="#why" class="block text-slate-300 hover:text-white py-2.5 text-sm">Why we built this</a>
                 <a href="#how" class="block text-slate-300 hover:text-white py-2.5 text-sm">How it works</a>
-                <a href="#features" class="block text-slate-300 hover:text-white py-2.5 text-sm">Features</a>
-                <a href="#use-cases" class="block text-slate-300 hover:text-white py-2.5 text-sm">Use cases</a>
-                <a href="#join" class="btn-primary block text-center px-4 py-2.5 rounded-lg font-semibold text-sm mt-3">Request access</a>
+                <a href="#features" class="block text-slate-300 hover:text-white py-2.5 text-sm">What's in the SDK</a>
+                <a href="#apply" class="btn-primary block text-center px-4 py-2.5 rounded-lg font-semibold text-sm mt-3">Apply</a>
             </div>
         </div>
     </header>
@@ -217,9 +255,8 @@ tailwind.config = {
     <!-- Hero -->
     <section class="relative pt-32 sm:pt-40 pb-24 sm:pb-32 overflow-hidden bg-ink-950">
         <div class="absolute inset-0 dot-grid opacity-60"></div>
-        <div class="orb w-[640px] h-[640px] -top-40 -left-40 bg-pg/20 opacity-50"></div>
-        <div class="orb w-[520px] h-[520px] -bottom-40 -right-32 bg-duck/15 opacity-40"></div>
-        <!-- top scrim for header readability -->
+        <div class="orb w-[640px] h-[640px] -top-40 -left-40 bg-duck/15 opacity-50"></div>
+        <div class="orb w-[520px] h-[520px] -bottom-40 -right-32 bg-duck/10 opacity-40"></div>
         <div class="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-black/40 to-transparent pointer-events-none"></div>
 
         <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -230,500 +267,382 @@ tailwind.config = {
                         <span class="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60 animate-ping"></span>
                         <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
                     </span>
-                    <span class="mono uppercase">Private beta · Limited access</span>
+                    <span class="mono uppercase">Private beta · 5 design partner slots</span>
                 </span>
             </div>
 
             <h1 class="display font-display font-bold text-white text-center text-[2.6rem] sm:text-6xl md:text-7xl lg:text-[5.25rem] leading-[1.02] tracking-tightest">
-                Postgres for transactions.<br class="hidden sm:block">
-                DuckDB for analytics.<br>
-                <span class="font-serif-i font-normal tracking-tight text-white/95">One platform.</span>
+                DuckDB for<br class="hidden sm:block">
+                <span class="font-serif-i font-normal tracking-tight text-white/95">real applications.</span>
             </h1>
 
-            <p class="mt-8 sm:mt-10 max-w-2xl mx-auto text-center text-base sm:text-lg text-slate-400 leading-relaxed">
-                Run <span class="mono text-slate-200">PostgreSQL</span> and <span class="mono text-slate-200">DuckDB</span> as isolated engines that talk to each other.
-                Join transactional and analytical data in a single query — no <span class="mono text-slate-300">ETL</span>, no read replicas, no glue code.
+            <p class="mt-8 sm:mt-10 max-w-3xl mx-auto text-center text-lg sm:text-xl text-slate-300 leading-relaxed">
+                The performance of DuckDB. The reliability you'd expect from a database that runs in production.
+            </p>
+
+            <p class="mt-6 max-w-2xl mx-auto text-center text-base text-slate-400 leading-relaxed">
+                DuckDB is a phenomenal engine. Putting it into an app with real users is another story — concurrent reads, configuration per connection, query routing, error handling under load. We've spent months on that so you don't have to. Drop-in DuckDB-compatible Python SDK, remote execution, built for applications, not dashboards.
             </p>
 
             <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
-                <a href="#join" class="btn-primary group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-[0.95rem]">
-                    Request beta access
+                <a href="#apply" class="btn-primary group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-[0.95rem]">
+                    Apply to be a design partner
                     <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-0.5 transition-transform" aria-hidden="true"></i>
                 </a>
-                <a href="#how" class="btn-ghost inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-medium text-[0.95rem]">
-                    See how it works
+                <a href="#sdk" class="btn-ghost inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-medium text-[0.95rem]">
+                    See the SDK
                 </a>
             </div>
 
             <div class="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
                 <div class="flex items-center gap-2 text-xs text-slate-500">
+                    <i class="fa-brands fa-python text-duck/80" aria-hidden="true"></i>
+                    <span>DuckDB-compatible Python SDK</span>
+                </div>
+                <span class="hidden sm:inline-block w-1 h-1 rounded-full bg-slate-700"></span>
+                <div class="flex items-center gap-2 text-xs text-slate-500">
                     <i class="fa-solid fa-bolt text-duck/80" aria-hidden="true"></i>
-                    <span>Columnar analytics</span>
+                    <span>Built for concurrent reads</span>
                 </div>
                 <span class="hidden sm:inline-block w-1 h-1 rounded-full bg-slate-700"></span>
                 <div class="flex items-center gap-2 text-xs text-slate-500">
-                    <i class="fa-solid fa-shield-halved text-pg/80" aria-hidden="true"></i>
-                    <span>ACID transactions</span>
-                </div>
-                <span class="hidden sm:inline-block w-1 h-1 rounded-full bg-slate-700"></span>
-                <div class="flex items-center gap-2 text-xs text-slate-500">
-                    <i class="fa-solid fa-server text-slate-400" aria-hidden="true"></i>
-                    <span>Managed or self-hosted</span>
+                    <i class="fa-solid fa-shield-halved text-duck/80" aria-hidden="true"></i>
+                    <span>Production-grade reliability</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- The split / Problem -->
-    <section class="relative py-24 sm:py-36 bg-ink-950 border-t border-white/5">
+    <!-- The drop-in demo -->
+    <section id="sdk" class="relative py-24 sm:py-36 bg-ink-950 border-t border-white/5">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mb-16">
-                <span class="eyebrow">The split</span>
+            <div class="max-w-3xl mb-14">
+                <span class="eyebrow">The migration</span>
                 <h2 class="mt-4 font-display font-bold text-white text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.08] tracking-tight">
-                    One database can't do both.<br>
-                    <span class="font-serif-i font-normal text-white/80">So we stopped pretending.</span>
+                    From <span class="mono font-medium text-white/95">import duckdb</span><br>
+                    <span class="font-serif-i font-normal text-white/85">to production-ready in two lines.</span>
                 </h2>
                 <p class="mt-6 text-slate-400 text-base sm:text-lg leading-relaxed">
-                    Postgres is the standard for transactions. DuckDB is unmatched for analytics. The mistake is forcing one to do the other's job.
+                    Same API. Same query semantics. Just remote execution that scales with your app.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-px bg-white/5 border border-white/5 rounded-2xl overflow-hidden">
-                <div class="bg-ink-900 p-7 sm:p-9">
-                    <div class="flex items-center gap-3 mb-5">
-                        <span class="w-2 h-2 rounded-full bg-pg"></span>
-                        <span class="mono text-xs uppercase tracking-wider text-pg/90">Postgres · OLTP</span>
+            <div class="grid lg:grid-cols-2 gap-6 lg:gap-8">
+
+                <!-- Before block -->
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="mono text-[0.7rem] uppercase tracking-wider text-slate-500 px-2 py-1 rounded-md bg-white/[0.03] border border-white/[0.06]">Before — DuckDB embedded</span>
                     </div>
-                    <h3 class="font-display text-xl sm:text-2xl font-semibold text-white leading-snug">
-                        Built for state, not for scans.
-                    </h3>
-                    <p class="mt-3 text-slate-400 text-[0.95rem] leading-relaxed">
-                        Row storage is great for transactional reads and writes. It's the wrong shape for aggregating millions of rows.
-                    </p>
-                    <ul class="mt-6 space-y-3 text-sm text-slate-400">
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-minus text-slate-600 mt-1.5 text-[0.6rem]" aria-hidden="true"></i>
-                            <span>Row-oriented storage is inefficient for large analytical scans.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-minus text-slate-600 mt-1.5 text-[0.6rem]" aria-hidden="true"></i>
-                            <span>Heavy aggregations compete with your production workload.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-minus text-slate-600 mt-1.5 text-[0.6rem]" aria-hidden="true"></i>
-                            <span>Scaling analytics usually means another database — and a pipeline to keep it in sync.</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-ink-900 p-7 sm:p-9">
-                    <div class="flex items-center gap-3 mb-5">
-                        <span class="w-2 h-2 rounded-full bg-duck"></span>
-                        <span class="mono text-xs uppercase tracking-wider text-duck/90">DuckDB · OLAP</span>
-                    </div>
-                    <h3 class="font-display text-xl sm:text-2xl font-semibold text-white leading-snug">
-                        Built for scans, not for state.
-                    </h3>
-                    <p class="mt-3 text-slate-400 text-[0.95rem] leading-relaxed">
-                        Columnar and parallel — phenomenal for analytics. But it was never designed for concurrent application writes.
-                    </p>
-                    <ul class="mt-6 space-y-3 text-sm text-slate-400">
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-minus text-slate-600 mt-1.5 text-[0.6rem]" aria-hidden="true"></i>
-                            <span>Single-writer model limits concurrent write throughput.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-minus text-slate-600 mt-1.5 text-[0.6rem]" aria-hidden="true"></i>
-                            <span>No native horizontal scaling for read-heavy production traffic.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-minus text-slate-600 mt-1.5 text-[0.6rem]" aria-hidden="true"></i>
-                            <span>Hard to wire up to a transactional source of truth without DIY plumbing.</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How it works (light section, diagram) -->
-    <section id="how" class="relative py-24 sm:py-36 bg-[#f7f7f5]">
-        <div class="absolute inset-0 dot-grid-light opacity-70"></div>
-
-        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mb-16">
-                <span class="eyebrow eyebrow-light">How it works</span>
-                <h2 class="mt-4 font-display font-bold text-slate-900 text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.08] tracking-tight">
-                    Two engines.<br>
-                    <span class="font-serif-i font-normal">One connection.</span>
-                </h2>
-                <p class="mt-6 text-slate-600 text-base sm:text-lg leading-relaxed">
-                    Connect once. Duckgresql routes each query to the right engine — Postgres for transactional reads and writes, DuckDB for analytical scans — and joins across both when you ask it to.
-                </p>
-            </div>
-
-            <!-- Architecture diagram -->
-            <div class="relative">
-                <div class="diagram-box rounded-3xl p-6 sm:p-10 lg:p-14">
-                    <svg viewBox="0 0 980 480" class="w-full h-auto" role="img" aria-label="Duckgresql architecture diagram">
-                        <defs>
-                            <linearGradient id="lineGradPg" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#94a3b8"/>
-                                <stop offset="100%" stop-color="#60a5fa"/>
-                            </linearGradient>
-                            <linearGradient id="lineGradDd" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#94a3b8"/>
-                                <stop offset="100%" stop-color="#fbbf24"/>
-                            </linearGradient>
-                            <marker id="arrPg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                                <path d="M0,0 L10,5 L0,10 z" fill="#60a5fa"/>
-                            </marker>
-                            <marker id="arrDd" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                                <path d="M0,0 L10,5 L0,10 z" fill="#fbbf24"/>
-                            </marker>
-                        </defs>
-
-                        <!-- App layer -->
-                        <g>
-                            <rect x="370" y="20" width="240" height="68" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
-                            <text x="490" y="50" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="16" font-weight="700" fill="#0f172a">Your application</text>
-                            <text x="490" y="71" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#64748b">Duckgresql SDK</text>
-                        </g>
-
-                        <!-- Single connection arrow -->
-                        <line x1="490" y1="92" x2="490" y2="156" stroke="#cbd5e1" stroke-width="2"/>
-                        <text x="500" y="128" font-family="JetBrains Mono, monospace" font-size="11" fill="#64748b">single connection</text>
-
-                        <!-- Duckgresql layer -->
-                        <g>
-                            <rect x="170" y="160" width="640" height="92" rx="18" fill="#0c0c10" stroke="#0c0c10"/>
-                            <text x="490" y="194" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="20" font-weight="700" fill="#ffffff">Duckgresql</text>
-                            <text x="490" y="217" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#a1a1aa">Query router · cross-engine planner · unified SQL</text>
-                            <text x="490" y="237" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#71717a">routes · joins · syncs</text>
-                        </g>
-
-                        <!-- Branches down -->
-                        <path d="M 320 252 V 296 H 250 V 332" fill="none" stroke="url(#lineGradPg)" stroke-width="2" marker-end="url(#arrPg)"/>
-                        <path d="M 660 252 V 296 H 730 V 332" fill="none" stroke="url(#lineGradDd)" stroke-width="2" marker-end="url(#arrDd)"/>
-
-                        <!-- Postgres engine -->
-                        <g>
-                            <rect x="100" y="340" width="300" height="116" rx="14" fill="#ffffff" stroke="#dbeafe"/>
-                            <circle cx="130" cy="370" r="6" fill="#60a5fa"/>
-                            <text x="146" y="375" font-family="JetBrains Mono, monospace" font-size="11" fill="#2563eb" letter-spacing="1">POSTGRES · OLTP</text>
-                            <text x="120" y="408" font-family="Inter Tight, sans-serif" font-size="18" font-weight="700" fill="#0f172a">Transactional state</text>
-                            <text x="120" y="430" font-family="Inter, sans-serif" font-size="13" fill="#475569">ACID writes · row storage</text>
-                            <text x="120" y="447" font-family="Inter, sans-serif" font-size="13" fill="#475569">indexes · extensions</text>
-                        </g>
-
-                        <!-- DuckDB engine -->
-                        <g>
-                            <rect x="580" y="340" width="300" height="116" rx="14" fill="#ffffff" stroke="#fef3c7"/>
-                            <circle cx="610" cy="370" r="6" fill="#fbbf24"/>
-                            <text x="626" y="375" font-family="JetBrains Mono, monospace" font-size="11" fill="#b45309" letter-spacing="1">DUCKDB · OLAP</text>
-                            <text x="600" y="408" font-family="Inter Tight, sans-serif" font-size="18" font-weight="700" fill="#0f172a">Analytical scale</text>
-                            <text x="600" y="430" font-family="Inter, sans-serif" font-size="13" fill="#475569">Columnar storage · parallel</text>
-                            <text x="600" y="447" font-family="Inter, sans-serif" font-size="13" fill="#475569">sub-second aggregates</text>
-                        </g>
-
-                        <!-- Cross-engine link -->
-                        <path d="M 400 398 H 580" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.35"/>
-                        <text x="490" y="392" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#64748b" letter-spacing="1">CROSS-ENGINE JOINS</text>
-                    </svg>
-                </div>
-
-                <!-- Three short value bullets under diagram -->
-                <div class="grid sm:grid-cols-3 gap-6 mt-10">
-                    <div>
-                        <div class="mono text-[0.7rem] uppercase tracking-wider text-slate-500">01 · Connect once</div>
-                        <p class="mt-2 text-slate-700 text-[0.95rem] leading-relaxed">One endpoint, one SDK. Drop it in where Postgres or DuckDB sits today.</p>
-                    </div>
-                    <div>
-                        <div class="mono text-[0.7rem] uppercase tracking-wider text-slate-500">02 · Route automatically</div>
-                        <p class="mt-2 text-slate-700 text-[0.95rem] leading-relaxed">Transactional queries land on Postgres. Analytical scans land on DuckDB. Override anytime.</p>
-                    </div>
-                    <div>
-                        <div class="mono text-[0.7rem] uppercase tracking-wider text-slate-500">03 · Join across both</div>
-                        <p class="mt-2 text-slate-700 text-[0.95rem] leading-relaxed">Mix tables from either engine in a single SQL statement. The planner handles the rest.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Code example -->
-    <section class="relative py-24 sm:py-36 bg-ink-950 overflow-hidden">
-        <div class="absolute inset-0 dot-grid opacity-50"></div>
-
-        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-                <div class="lg:col-span-5">
-                    <span class="eyebrow">Example</span>
-                    <h2 class="mt-4 font-display font-bold text-white text-3xl sm:text-4xl lg:text-[2.5rem] leading-[1.08] tracking-tight">
-                        One query.<br>
-                        <span class="font-serif-i font-normal text-white/85">Both engines.</span>
-                    </h2>
-                    <p class="mt-6 text-slate-400 text-base leading-relaxed">
-                        Reference any table from either engine. Duckgresql plans the join, pushes work down, and returns one result set.
-                    </p>
-                    <ul class="mt-8 space-y-4">
-                        <li class="flex items-start gap-3 text-sm text-slate-300">
-                            <i class="fa-solid fa-check text-emerald-400 mt-1 text-xs" aria-hidden="true"></i>
-                            <span>Standard SQL — no new dialect to learn.</span>
-                        </li>
-                        <li class="flex items-start gap-3 text-sm text-slate-300">
-                            <i class="fa-solid fa-check text-emerald-400 mt-1 text-xs" aria-hidden="true"></i>
-                            <span>Live Postgres data, columnar-fast aggregates.</span>
-                        </li>
-                        <li class="flex items-start gap-3 text-sm text-slate-300">
-                            <i class="fa-solid fa-check text-emerald-400 mt-1 text-xs" aria-hidden="true"></i>
-                            <span>No replication scripts, no warehouse syncs, no stale data.</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="lg:col-span-7">
-                    <div class="code-block rounded-2xl overflow-hidden shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)]">
+                    <div class="code-block rounded-2xl overflow-hidden shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] relative">
                         <div class="code-window-bar flex items-center justify-between px-4 py-2.5">
                             <div class="flex items-center gap-1.5">
                                 <span class="w-2.5 h-2.5 rounded-full bg-white/10"></span>
                                 <span class="w-2.5 h-2.5 rounded-full bg-white/10"></span>
                                 <span class="w-2.5 h-2.5 rounded-full bg-white/10"></span>
                             </div>
-                            <span class="mono text-[0.7rem] text-slate-500">cross_engine_join.sql</span>
+                            <span class="mono text-[0.7rem] text-slate-500">app.py</span>
                             <span class="w-12"></span>
                         </div>
-<pre class="code px-5 sm:px-7 py-6 overflow-x-auto"><code class="code"><span class="tok-cmt">-- Active Pro users joined with their last 30 days of activity</span>
-<span class="tok-kw">SELECT</span>
-  u.email,
-  u.plan,
-  s.events_last_30d,
-  s.last_seen_at
-<span class="tok-kw">FROM</span> <span class="tok-pg">postgres</span>.users <span class="tok-id">u</span>            <span class="tok-cmt">-- OLTP: live application state</span>
-<span class="tok-kw">JOIN</span> <span class="tok-dd">duckdb</span>.user_events_30d <span class="tok-id">s</span>   <span class="tok-cmt">-- OLAP: precomputed columnar aggregate</span>
-  <span class="tok-kw">ON</span> s.user_id <span class="tok-op">=</span> u.id
-<span class="tok-kw">WHERE</span> u.plan <span class="tok-op">=</span> <span class="tok-str">'pro'</span>
-<span class="tok-kw">ORDER BY</span> s.events_last_30d <span class="tok-kw">DESC</span>
-<span class="tok-kw">LIMIT</span> <span class="tok-num">100</span>;</code></pre>
-                        <div class="code-window-bar border-t border-b-0 px-5 py-2.5 flex items-center gap-3 text-[0.72rem] mono text-slate-500">
-                            <span class="inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-pg"></span>postgres</span>
-                            <span class="inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-duck"></span>duckdb</span>
-                            <span class="ml-auto">planner: cross-engine</span>
+                        <button class="copy-btn" data-copy-target="code-before" aria-label="Copy code">Copy</button>
+<pre class="code px-5 sm:px-7 py-6 overflow-x-auto" id="code-before"><code class="code"><span class="tok-kw">import</span> <span class="tok-mod">duckdb</span>
+
+<span class="tok-id">conn</span> <span class="tok-op">=</span> <span class="tok-mod">duckdb</span>.<span class="tok-fn">connect</span>(<span class="tok-str">"my_database.db"</span>)
+<span class="tok-id">result</span> <span class="tok-op">=</span> <span class="tok-id">conn</span>.<span class="tok-fn">execute</span>(
+    <span class="tok-str">"SELECT user_id, COUNT(*) FROM events GROUP BY 1"</span>
+).<span class="tok-fn">fetchall</span>()</code></pre>
+                    </div>
+                </div>
+
+                <!-- After block -->
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="mono text-[0.7rem] uppercase tracking-wider text-duck/90 px-2 py-1 rounded-md bg-duck/[0.06] border border-duck/20">After — Duckgresql remote</span>
+                    </div>
+                    <div class="code-block code-after rounded-2xl overflow-hidden relative">
+                        <div class="code-window-bar flex items-center justify-between px-4 py-2.5">
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-white/10"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-white/10"></span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-white/10"></span>
+                            </div>
+                            <span class="mono text-[0.7rem] text-slate-500">app.py</span>
+                            <span class="w-12"></span>
                         </div>
+                        <button class="copy-btn" data-copy-target="code-after" aria-label="Copy code">Copy</button>
+<pre class="code px-5 sm:px-7 py-6 overflow-x-auto" id="code-after"><code class="code"><span class="tok-kw">import</span> <span class="tok-mod">duckgresql</span>
+
+<span class="tok-id">conn</span> <span class="tok-op">=</span> <span class="tok-mod">duckgresql</span>.<span class="tok-fn">connect</span>(
+    <span class="tok-arg">token</span><span class="tok-op">=</span><span class="tok-str">"dkgql_..."</span>,
+    <span class="tok-arg">database</span><span class="tok-op">=</span><span class="tok-str">"my_database"</span>,
+)
+<span class="tok-id">result</span> <span class="tok-op">=</span> <span class="tok-id">conn</span>.<span class="tok-fn">execute</span>(
+    <span class="tok-str">"SELECT user_id, COUNT(*) FROM events GROUP BY 1"</span>
+).<span class="tok-fn">fetchall</span>()</code></pre>
                     </div>
                 </div>
             </div>
+
+            <p class="mt-10 text-center text-sm text-slate-500 max-w-3xl mx-auto leading-relaxed">
+                Same fetch methods (<span class="mono text-slate-300">fetchall</span>, <span class="mono text-slate-300">fetchone</span>, <span class="mono text-slate-300">fetchdf</span>, <span class="mono text-slate-300">fetch_arrow_table</span>). Same query language. Async support included. Python SDK first. JavaScript / TypeScript on the way.
+            </p>
         </div>
     </section>
 
-    <!-- Features -->
-    <section id="features" class="relative py-24 sm:py-36 bg-ink-950 border-t border-white/5">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mb-16">
-                <span class="eyebrow">Features</span>
-                <h2 class="mt-4 font-display font-bold text-white text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.08] tracking-tight">
-                    Everything you need<br>
-                    <span class="font-serif-i font-normal text-white/85">to ship hybrid workloads.</span>
+    <!-- Why we built this -->
+    <section id="why" class="relative py-24 sm:py-36 bg-[#f7f7f5] border-t border-black/5">
+        <div class="absolute inset-0 dot-grid-light opacity-50"></div>
+
+        <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12">
+                <span class="eyebrow eyebrow-light">Why we built this</span>
+                <h2 class="mt-4 font-display font-bold text-slate-900 text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.08] tracking-tight">
+                    Born from two years<br>
+                    <span class="font-serif-i font-normal">of DuckDB in production.</span>
                 </h2>
-                <p class="mt-6 text-slate-400 text-base sm:text-lg leading-relaxed">
-                    The platform layer that makes Postgres and DuckDB feel like one system — without losing what makes either of them great.
+            </div>
+
+            <article class="letter-card rounded-3xl p-8 sm:p-12 lg:p-14">
+                <div class="space-y-6 text-slate-700 text-[1.05rem] sm:text-[1.1rem] leading-[1.75]">
+                    <p>
+                        Duckgresql comes from two years of running DuckDB in production. The migration from Postgres fixed analytics overnight — and opened a harder problem: making DuckDB behave under real concurrent traffic.
+                    </p>
+                    <p>
+                        The managed options out there are built for analytics teams running on top of a data lake — not for an application that needs DuckDB to behave under real traffic. Duckgresql exists to fill that gap.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="relative py-24 sm:py-36 bg-[#f7f7f5] border-t border-black/5">
+        <div class="absolute inset-0 dot-grid-light opacity-70"></div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-16">
+                <span class="eyebrow eyebrow-light">How it works</span>
+                <h2 class="mt-4 font-display font-bold text-slate-900 text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.08] tracking-tight">
+                    DuckDB embedded,<br>
+                    <span class="font-serif-i font-normal">made remote.</span>
+                </h2>
+                <p class="mt-6 text-slate-600 text-base sm:text-lg leading-relaxed">
+                    A DuckDB-compatible client points your application at a remote engine pool. The operational layer — connection management, configuration, query routing, error handling under concurrent load — runs on our side.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 border border-white/5 rounded-2xl overflow-hidden">
+            <div class="relative">
+                <div class="diagram-box rounded-3xl p-6 sm:p-10 lg:p-14">
+                    <svg viewBox="0 0 320 462" class="block mx-auto w-full max-w-[520px] h-auto" role="img" aria-label="Duckgresql architecture diagram">
+                        <defs>
+                            <marker id="arrHead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                                <path d="M0,0 L10,5 L0,10 z" fill="#fbbf24"/>
+                            </marker>
+                        </defs>
 
-                <div class="bg-ink-900 p-7 sm:p-9 card-lift hover:bg-ink-800/80">
-                    <div class="flex items-center gap-3 mb-5">
-                        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-white/[0.04] hairline">
-                            <i class="fa-solid fa-link text-slate-300 text-sm" aria-hidden="true"></i>
-                        </span>
-                        <span class="mono text-[0.7rem] uppercase tracking-wider text-slate-500">01</span>
-                    </div>
-                    <h3 class="font-display text-lg font-semibold text-white">Cross-engine queries</h3>
-                    <p class="mt-2.5 text-slate-400 text-[0.92rem] leading-relaxed">
-                        Reference Postgres and DuckDB tables in the same statement. The planner pushes work down to the right engine.
-                    </p>
+                        <!-- Box 1: Your application -->
+                        <g>
+                            <rect x="30" y="18" width="260" height="66" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+                            <text x="160" y="46" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Your application</text>
+                            <g transform="translate(136, 56)">
+                                <rect x="0" y="0" width="11" height="7" rx="2" fill="#3b82f6"/>
+                                <rect x="5" y="5" width="11" height="7" rx="2" fill="#fbbf24"/>
+                            </g>
+                            <text x="156" y="68" font-family="JetBrains Mono, monospace" font-size="9" fill="#64748b">Python</text>
+                        </g>
+
+                        <!-- Arrow 1: app → cloud -->
+                        <line x1="160" y1="94" x2="160" y2="170" stroke="#94a3b8" stroke-width="1.75" marker-end="url(#arrHead)"/>
+                        <text x="170" y="124" font-family="JetBrains Mono, monospace" font-size="9" fill="#64748b">duckgresql Python SDK</text>
+                        <text x="170" y="140" font-family="JetBrains Mono, monospace" font-size="9" fill="#94a3b8">DuckDB-compatible API</text>
+
+                        <!-- Box 2: Duckgresql cloud (protagonist) -->
+                        <g>
+                            <rect x="30" y="174" width="260" height="120" rx="12" fill="#0c0c10"/>
+                            <circle cx="44" cy="188" r="2.5" fill="#fbbf24"/>
+                            <text x="160" y="212" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="16" font-weight="700" fill="#ffffff">Duckgresql cloud</text>
+                            <text x="160" y="246" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#a1a1aa">Connection pooling · query routing</text>
+                            <text x="160" y="263" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#a1a1aa">Concurrent execution · error handling</text>
+                        </g>
+
+                        <!-- Arrow 2: cloud → engines -->
+                        <line x1="160" y1="304" x2="160" y2="370" stroke="#94a3b8" stroke-width="1.75" marker-end="url(#arrHead)"/>
+                        <text x="170" y="341" font-family="JetBrains Mono, monospace" font-size="9" fill="#64748b">Arrow Flight SQL</text>
+
+                        <!-- Box 3: DuckDB engines -->
+                        <g>
+                            <rect x="30" y="374" width="260" height="82" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+                            <text x="160" y="396" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="#b45309" letter-spacing="1.1">DUCKDB · ENGINE POOL</text>
+                            <text x="160" y="420" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="14" font-weight="700" fill="#0f172a">DuckDB engines</text>
+                            <text x="160" y="440" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#64748b">tuned for production load</text>
+                        </g>
+                    </svg>
                 </div>
 
-                <div class="bg-ink-900 p-7 sm:p-9 card-lift hover:bg-ink-800/80">
-                    <div class="flex items-center gap-3 mb-5">
-                        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-white/[0.04] hairline">
-                            <i class="fa-solid fa-code-branch text-slate-300 text-sm" aria-hidden="true"></i>
-                        </span>
-                        <span class="mono text-[0.7rem] uppercase tracking-wider text-slate-500">02</span>
+                <!-- Three steps -->
+                <div class="grid sm:grid-cols-3 gap-8 mt-12">
+                    <div>
+                        <div class="mono text-[0.7rem] uppercase tracking-wider text-slate-500">01 · Drop in the SDK</div>
+                        <p class="mt-2 text-slate-700 text-[0.95rem] leading-relaxed">
+                            Replace <span class="mono text-slate-900">import duckdb</span> with <span class="mono text-slate-900">import duckgresql</span>. Same execution methods, same query semantics, same return types. Async-friendly, pandas-friendly, Arrow-friendly.
+                        </p>
                     </div>
-                    <h3 class="font-display text-lg font-semibold text-white">Workload routing</h3>
-                    <p class="mt-2.5 text-slate-400 text-[0.92rem] leading-relaxed">
-                        Send each query to the engine that fits. Let the router decide, or pin it explicitly via the SDK.
-                    </p>
-                </div>
-
-                <div class="bg-ink-900 p-7 sm:p-9 card-lift hover:bg-ink-800/80">
-                    <div class="flex items-center gap-3 mb-5">
-                        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-white/[0.04] hairline">
-                            <i class="fa-solid fa-file-import text-slate-300 text-sm" aria-hidden="true"></i>
-                        </span>
-                        <span class="mono text-[0.7rem] uppercase tracking-wider text-slate-500">03</span>
+                    <div>
+                        <div class="mono text-[0.7rem] uppercase tracking-wider text-slate-500">02 · We handle the operational layer</div>
+                        <p class="mt-2 text-slate-700 text-[0.95rem] leading-relaxed">
+                            Connection pooling, memory configuration, query routing under concurrent load, graceful error handling. The work that takes months to get right when you DIY DuckDB in production.
+                        </p>
                     </div>
-                    <h3 class="font-display text-lg font-semibold text-white">DuckDB import</h3>
-                    <p class="mt-2.5 text-slate-400 text-[0.92rem] leading-relaxed">
-                        Bring existing DuckDB files or MotherDuck data, then connect them straight to your transactional tables.
-                    </p>
-                </div>
-
-                <div class="bg-ink-900 p-7 sm:p-9 card-lift hover:bg-ink-800/80">
-                    <div class="flex items-center gap-3 mb-5">
-                        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-white/[0.04] hairline">
-                            <i class="fa-solid fa-plug text-slate-300 text-sm" aria-hidden="true"></i>
-                        </span>
-                        <span class="mono text-[0.7rem] uppercase tracking-wider text-slate-500">04</span>
+                    <div>
+                        <div class="mono text-[0.7rem] uppercase tracking-wider text-slate-500">03 · Bring Postgres if you need it (optional)</div>
+                        <p class="mt-2 text-slate-700 text-[0.95rem] leading-relaxed">
+                            Migrating from Postgres to DuckDB gradually? Need to query both systems with one SQL surface? Use the Postgres bridge. If you don't need it, ignore it — it's not in the hot path.
+                        </p>
                     </div>
-                    <h3 class="font-display text-lg font-semibold text-white">Drop-in Postgres for OLTP</h3>
-                    <p class="mt-2.5 text-slate-400 text-[0.92rem] leading-relaxed">
-                        Use any Postgres driver, ORM, or BI tool to reach the transactional side. Cross-engine queries run through the SDK.
-                    </p>
-                </div>
-
-                <div class="bg-ink-900 p-7 sm:p-9 card-lift hover:bg-ink-800/80">
-                    <div class="flex items-center gap-3 mb-5">
-                        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-white/[0.04] hairline">
-                            <i class="fa-solid fa-server text-slate-300 text-sm" aria-hidden="true"></i>
-                        </span>
-                        <span class="mono text-[0.7rem] uppercase tracking-wider text-slate-500">05</span>
-                    </div>
-                    <h3 class="font-display text-lg font-semibold text-white">Managed or self-hosted</h3>
-                    <p class="mt-2.5 text-slate-400 text-[0.92rem] leading-relaxed">
-                        Run it as a fully managed service, or deploy on your own infrastructure. Same platform, your call.
-                    </p>
-                </div>
-
-                <div class="bg-ink-900 p-7 sm:p-9 card-lift hover:bg-ink-800/80">
-                    <div class="flex items-center gap-3 mb-5">
-                        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-white/[0.04] hairline">
-                            <i class="fa-solid fa-wand-magic-sparkles text-slate-300 text-sm" aria-hidden="true"></i>
-                        </span>
-                        <span class="mono text-[0.7rem] uppercase tracking-wider text-slate-500">06</span>
-                    </div>
-                    <h3 class="font-display text-lg font-semibold text-white inline-flex items-center gap-2">
-                        Query advisor
-                        <span class="text-[0.6rem] mono uppercase tracking-wider text-slate-500 px-1.5 py-0.5 rounded bg-white/[0.04] hairline">Soon</span>
-                    </h3>
-                    <p class="mt-2.5 text-slate-400 text-[0.92rem] leading-relaxed">
-                        Run on either engine. We'll tell you when the other one would have been faster — and why.
-                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Use cases -->
+    <!-- What's in the SDK (Features) -->
+    <section id="features" class="relative py-24 sm:py-36 bg-ink-950 border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-16">
+                <span class="eyebrow">What's in the SDK</span>
+                <h2 class="mt-4 font-display font-bold text-white text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.08] tracking-tight">
+                    What's in the SDK<br>
+                    <span class="font-serif-i font-normal text-white/85">today.</span>
+                </h2>
+                <p class="mt-6 text-slate-400 text-base sm:text-lg leading-relaxed">
+                    We're in private beta. This is the surface we're hardening with our first design partners.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-px bg-white/5 border border-white/5 rounded-2xl overflow-hidden">
+
+                <div class="bg-ink-900 p-7 sm:p-9 card-lift hover:bg-ink-800/80">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-white/[0.04] hairline">
+                            <i class="fa-brands fa-python text-slate-300 text-sm" aria-hidden="true"></i>
+                        </span>
+                        <span class="mono text-[0.7rem] uppercase tracking-wider text-slate-500">01</span>
+                    </div>
+                    <h3 class="font-display text-lg font-semibold text-white">DuckDB-compatible Python API</h3>
+                    <p class="mt-2.5 text-slate-400 text-[0.92rem] leading-relaxed">
+                        Connect, execute, fetchall, fetchone, fetchdf, fetch_arrow_table, async support. The methods you already use, pointed at a remote engine.
+                    </p>
+                </div>
+
+                <div class="bg-ink-900 p-7 sm:p-9 card-lift hover:bg-ink-800/80">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-white/[0.04] hairline">
+                            <i class="fa-solid fa-bolt text-slate-300 text-sm" aria-hidden="true"></i>
+                        </span>
+                        <span class="mono text-[0.7rem] uppercase tracking-wider text-slate-500">02</span>
+                    </div>
+                    <h3 class="font-display text-lg font-semibold text-white">Concurrent reads, handled</h3>
+                    <p class="mt-2.5 text-slate-400 text-[0.92rem] leading-relaxed">
+                        Multiple clients, multiple queries, all hitting tuned DuckDB engines without saturating each other. The configuration work is already done.
+                    </p>
+                </div>
+
+                <div class="bg-ink-900 p-7 sm:p-9 card-lift hover:bg-ink-800/80">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-white/[0.04] hairline">
+                            <i class="fa-solid fa-clock text-slate-300 text-sm" aria-hidden="true"></i>
+                        </span>
+                        <span class="mono text-[0.7rem] uppercase tracking-wider text-slate-500">03</span>
+                    </div>
+                    <h3 class="font-display text-lg font-semibold text-white">Async jobs for long-running queries</h3>
+                    <p class="mt-2.5 text-slate-400 text-[0.92rem] leading-relaxed">
+                        Submit an analytical query, get a job ID, poll for completion. For the queries that take seconds or minutes, not milliseconds.
+                    </p>
+                </div>
+
+                <div class="bg-ink-900 p-7 sm:p-9 card-lift hover:bg-ink-800/80">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-white/[0.04] hairline">
+                            <i class="fa-solid fa-bridge text-slate-300 text-sm" aria-hidden="true"></i>
+                        </span>
+                        <span class="mono text-[0.7rem] uppercase tracking-wider text-slate-500">04</span>
+                    </div>
+                    <h3 class="font-display text-lg font-semibold text-white">Postgres bridge (optional)</h3>
+                    <p class="mt-2.5 text-slate-400 text-[0.92rem] leading-relaxed">
+                        Migrate from Postgres to DuckDB gradually, or query both with the same SQL. Use it when you need it. Skip it when you don't.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Who this is for -->
     <section id="use-cases" class="relative py-24 sm:py-36 bg-[#f7f7f5] border-t border-black/5">
         <div class="absolute inset-0 dot-grid-light opacity-60"></div>
 
         <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-3xl mb-16">
-                <span class="eyebrow eyebrow-light">Built for</span>
+                <span class="eyebrow eyebrow-light">Who this is for</span>
                 <h2 class="mt-4 font-display font-bold text-slate-900 text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.08] tracking-tight">
-                    Teams that outgrew<br>
-                    <span class="font-serif-i font-normal">a single database.</span>
+                    Who this<br>
+                    <span class="font-serif-i font-normal">is for.</span>
                 </h2>
                 <p class="mt-6 text-slate-600 text-base sm:text-lg leading-relaxed">
-                    Whether you're scaling Postgres past its analytical ceiling, or productionizing DuckDB for a real application — this is the layer that makes it work.
+                    We're being deliberately narrow during the beta. If this sounds like you, we want to talk.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+            <article class="rounded-2xl bg-white border border-slate-200/80 p-8 sm:p-12 max-w-4xl">
+                <div class="flex items-center gap-2 mb-5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-duck"></span>
+                    <span class="mono text-[0.7rem] uppercase tracking-wider text-slate-500">Who this is for · 01</span>
+                </div>
+                <h3 class="font-display text-2xl sm:text-3xl font-semibold text-slate-900 leading-snug">
+                    Teams running DuckDB (or considering it) for an application with concurrent users
+                </h3>
+                <p class="mt-6 text-slate-600 text-[1rem] sm:text-[1.05rem] leading-relaxed">
+                    You've seen what DuckDB can do on a single laptop, on a single notebook, on a single dashboard. You want to bring that performance to an app where dozens or hundreds of users are filtering, aggregating, exploring concurrently. You don't want to spend three months tuning configuration, writing routing logic, handling edge cases when a query OOMs and takes others down with it. You want to focus on your product.
+                </p>
+                <div class="mt-7 flex flex-wrap gap-2">
+                    <span class="mono text-[0.7rem] px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">concurrent reads</span>
+                    <span class="mono text-[0.7rem] px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">production load</span>
+                    <span class="mono text-[0.7rem] px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">Python-first</span>
+                </div>
+            </article>
 
-                <article class="group rounded-2xl bg-white border border-slate-200/80 p-7 sm:p-9 hover:border-slate-300 transition-colors">
-                    <div class="flex items-center gap-2 mb-4">
-                        <span class="w-1.5 h-1.5 rounded-full bg-pg"></span>
-                        <span class="mono text-[0.7rem] uppercase tracking-wider text-slate-500">Use case · 01</span>
-                    </div>
-                    <h3 class="font-display text-xl sm:text-2xl font-semibold text-slate-900 leading-snug">Scale analytics off your production Postgres</h3>
-                    <p class="mt-4 text-slate-600 text-[0.95rem] leading-relaxed">
-                        Move heavy aggregations to DuckDB without ripping out Postgres. Keep transactional data live, run analytics columnar — joined in a single query.
-                    </p>
-                    <div class="mt-6 flex flex-wrap gap-2">
-                        <span class="mono text-[0.7rem] px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">no replicas</span>
-                        <span class="mono text-[0.7rem] px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">no ETL</span>
-                        <span class="mono text-[0.7rem] px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">live data</span>
-                    </div>
-                </article>
-
-                <article class="group rounded-2xl bg-white border border-slate-200/80 p-7 sm:p-9 hover:border-slate-300 transition-colors">
-                    <div class="flex items-center gap-2 mb-4">
-                        <span class="w-1.5 h-1.5 rounded-full bg-duck"></span>
-                        <span class="mono text-[0.7rem] uppercase tracking-wider text-slate-500">Use case · 02</span>
-                    </div>
-                    <h3 class="font-display text-xl sm:text-2xl font-semibold text-slate-900 leading-snug">Productionize DuckDB for a real application</h3>
-                    <p class="mt-4 text-slate-600 text-[0.95rem] leading-relaxed">
-                        DuckDB is great until you need concurrent writes. Pair it with Postgres for state and you get the speed of columnar with the durability of OLTP.
-                    </p>
-                    <div class="mt-6 flex flex-wrap gap-2">
-                        <span class="mono text-[0.7rem] px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">concurrent writes</span>
-                        <span class="mono text-[0.7rem] px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">ACID</span>
-                        <span class="mono text-[0.7rem] px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">columnar reads</span>
-                    </div>
-                </article>
-
-                <article class="group rounded-2xl bg-white border border-slate-200/80 p-7 sm:p-9 hover:border-slate-300 transition-colors">
-                    <div class="flex items-center gap-2 mb-4">
-                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                        <span class="mono text-[0.7rem] uppercase tracking-wider text-slate-500">Use case · 03</span>
-                    </div>
-                    <h3 class="font-display text-xl sm:text-2xl font-semibold text-slate-900 leading-snug">Embedded analytics, inside your product</h3>
-                    <p class="mt-4 text-slate-600 text-[0.95rem] leading-relaxed">
-                        Customer-facing dashboards and reports powered by DuckDB, with Postgres holding application state. Sub-second responses, no separate warehouse.
-                    </p>
-                    <div class="mt-6 flex flex-wrap gap-2">
-                        <span class="mono text-[0.7rem] px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">in-app reports</span>
-                        <span class="mono text-[0.7rem] px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">sub-second</span>
-                        <span class="mono text-[0.7rem] px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">multi-tenant</span>
-                    </div>
-                </article>
-
-                <article class="group rounded-2xl bg-white border border-slate-200/80 p-7 sm:p-9 hover:border-slate-300 transition-colors">
-                    <div class="flex items-center gap-2 mb-4">
-                        <span class="w-1.5 h-1.5 rounded-full bg-pink-500"></span>
-                        <span class="mono text-[0.7rem] uppercase tracking-wider text-slate-500">Use case · 04</span>
-                    </div>
-                    <h3 class="font-display text-xl sm:text-2xl font-semibold text-slate-900 leading-snug">Migrate, gradually — not in one weekend</h3>
-                    <p class="mt-4 text-slate-600 text-[0.95rem] leading-relaxed">
-                        Move workloads from Postgres to DuckDB one query at a time. Cross-engine joins keep things working through the entire transition.
-                    </p>
-                    <div class="mt-6 flex flex-wrap gap-2">
-                        <span class="mono text-[0.7rem] px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">incremental</span>
-                        <span class="mono text-[0.7rem] px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">no big-bang</span>
-                        <span class="mono text-[0.7rem] px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">reversible</span>
-                    </div>
-                </article>
-
-            </div>
+            <p class="mt-8 text-sm text-slate-500 max-w-2xl leading-relaxed">
+                Not your situation? We'll get to other use cases after the beta. Reach out anyway if you're curious — but we're prioritizing the profile above for now.
+            </p>
         </div>
     </section>
 
-    <!-- CTA + Waitlist -->
-    <section id="join" class="relative py-24 sm:py-36 bg-ink-950 overflow-hidden border-t border-white/5">
+    <!-- Apply / Design partner program -->
+    <section id="apply" class="relative py-24 sm:py-36 bg-ink-950 overflow-hidden border-t border-white/5">
         <div class="absolute inset-0 dot-grid opacity-60"></div>
-        <div class="orb w-[600px] h-[600px] -top-40 left-1/2 -translate-x-1/2 bg-pg/15 opacity-50"></div>
+        <div class="orb w-[600px] h-[600px] -top-40 left-1/2 -translate-x-1/2 bg-duck/10 opacity-50"></div>
 
         <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <span class="eyebrow justify-center">Private beta</span>
+                <span class="eyebrow justify-center">Design partner program</span>
                 <h2 class="mt-4 font-display font-bold text-white text-3xl sm:text-4xl lg:text-[3rem] leading-[1.05] tracking-tight">
-                    Get early access<br>
-                    <span class="font-serif-i font-normal text-white/85">to Duckgresql.</span>
+                    Built together<br>
+                    <span class="font-serif-i font-normal text-white/85">with our first five.</span>
                 </h2>
-                <p class="mt-5 text-slate-400 text-base sm:text-lg leading-relaxed max-w-xl mx-auto">
-                    We're onboarding a small group of teams. Tell us what you're building and we'll be in touch.
-                </p>
+                <div class="mt-7 max-w-2xl mx-auto space-y-4 text-slate-400 text-base sm:text-[1.05rem] leading-relaxed">
+                    <p>
+                        We're taking on five teams as design partners for the private beta. Free during the program. Direct access to the founder. In exchange, we ask for a 30-minute call every two weeks so we can build this with your real workload in mind, not in a vacuum.
+                    </p>
+                    <p>
+                        We'll prioritize teams already running DuckDB in or near production.
+                    </p>
+                </div>
             </div>
 
             <div class="rounded-2xl bg-ink-900 hairline p-6 sm:p-8">
-                <div id="waitlist-success" class="hidden text-center bg-emerald-500/[0.08] border border-emerald-400/20 rounded-xl p-6 mb-2">
-                    <h3 class="font-display text-lg font-bold text-emerald-300 mb-1.5">You're on the list.</h3>
-                    <p class="text-emerald-200/80 text-sm">
-                        Thanks — we'll reach out as soon as a slot opens up for your use case.
+                <div id="waitlist-success" class="hidden text-center bg-duck/[0.06] border border-duck/25 rounded-xl p-6 mb-2">
+                    <h3 class="font-display text-lg font-bold text-duck mb-1.5">Thanks.</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        We read each one ourselves. If you're a fit for one of the five slots, we'll set up a call within the week.
                     </p>
                 </div>
 
@@ -732,40 +651,94 @@ tailwind.config = {
                         <div>
                             <label for="waitlist-name" class="block text-xs font-medium text-slate-400 mb-2 mono uppercase tracking-wider">Name</label>
                             <input id="waitlist-name" name="name" type="text" required minlength="2" maxlength="255" autocomplete="name" placeholder="Your full name"
-                                class="w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-pg/40 focus:border-pg transition-colors">
+                                class="w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-duck/40 focus:border-duck transition-colors">
                             <p class="text-red-400 text-xs mt-1.5 hidden" data-error-for="name"></p>
                         </div>
 
                         <div>
+                            <label for="waitlist-role" class="block text-xs font-medium text-slate-400 mb-2 mono uppercase tracking-wider">Role</label>
+                            <input id="waitlist-role" name="role" type="text" required minlength="2" maxlength="255" placeholder="Staff Engineer, CTO, Tech Lead…"
+                                class="w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-duck/40 focus:border-duck transition-colors">
+                            <p class="text-red-400 text-xs mt-1.5 hidden" data-error-for="role"></p>
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-5">
+                        <div>
                             <label for="waitlist-company" class="block text-xs font-medium text-slate-400 mb-2 mono uppercase tracking-wider">Company</label>
                             <input id="waitlist-company" name="company" type="text" required minlength="2" maxlength="255" autocomplete="organization" placeholder="Your company"
-                                class="w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-pg/40 focus:border-pg transition-colors">
+                                class="w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-duck/40 focus:border-duck transition-colors">
                             <p class="text-red-400 text-xs mt-1.5 hidden" data-error-for="company"></p>
+                        </div>
+
+                        <div>
+                            <label for="waitlist-stage" class="block text-xs font-medium text-slate-400 mb-2 mono uppercase tracking-wider">Company stage</label>
+                            <select id="waitlist-stage" name="stage" required
+                                class="form-select w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-duck/40 focus:border-duck transition-colors">
+                                <option value="" disabled selected>Select stage…</option>
+                                <option value="Pre-seed">Pre-seed</option>
+                                <option value="Seed">Seed</option>
+                                <option value="Series A">Series A</option>
+                                <option value="Series B">Series B</option>
+                                <option value="Series C+">Series C+</option>
+                                <option value="Bootstrapped">Bootstrapped</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <p class="text-red-400 text-xs mt-1.5 hidden" data-error-for="stage"></p>
                         </div>
                     </div>
 
                     <div>
                         <label for="waitlist-email" class="block text-xs font-medium text-slate-400 mb-2 mono uppercase tracking-wider">Work email</label>
                         <input id="waitlist-email" name="email" type="email" required autocomplete="email" placeholder="you@company.com"
-                            class="w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-pg/40 focus:border-pg transition-colors">
+                            class="w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-duck/40 focus:border-duck transition-colors">
                         <p class="text-red-400 text-xs mt-1.5 hidden" data-error-for="email"></p>
                     </div>
 
+                    <fieldset>
+                        <legend class="block text-xs font-medium text-slate-400 mb-3 mono uppercase tracking-wider">Are you currently using DuckDB?</legend>
+                        <div class="grid sm:grid-cols-2 gap-2.5">
+                            <label class="flex items-center gap-2.5 px-4 py-2.5 rounded-lg border border-white/10 bg-white/[0.02] cursor-pointer hover:bg-white/[0.05] transition-colors text-sm text-slate-300 has-[:checked]:border-duck/50 has-[:checked]:bg-duck/[0.05]">
+                                <input type="radio" name="duckdb_usage" value="Yes, in production" required class="accent-duck">
+                                <span>Yes, in production</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 px-4 py-2.5 rounded-lg border border-white/10 bg-white/[0.02] cursor-pointer hover:bg-white/[0.05] transition-colors text-sm text-slate-300 has-[:checked]:border-duck/50 has-[:checked]:bg-duck/[0.05]">
+                                <input type="radio" name="duckdb_usage" value="Yes, experimenting" class="accent-duck">
+                                <span>Yes, experimenting</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 px-4 py-2.5 rounded-lg border border-white/10 bg-white/[0.02] cursor-pointer hover:bg-white/[0.05] transition-colors text-sm text-slate-300 has-[:checked]:border-duck/50 has-[:checked]:bg-duck/[0.05]">
+                                <input type="radio" name="duckdb_usage" value="No, but evaluating" class="accent-duck">
+                                <span>No, but evaluating</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 px-4 py-2.5 rounded-lg border border-white/10 bg-white/[0.02] cursor-pointer hover:bg-white/[0.05] transition-colors text-sm text-slate-300 has-[:checked]:border-duck/50 has-[:checked]:bg-duck/[0.05]">
+                                <input type="radio" name="duckdb_usage" value="No" class="accent-duck">
+                                <span>No</span>
+                            </label>
+                        </div>
+                        <p class="text-red-400 text-xs mt-1.5 hidden" data-error-for="duckdb_usage"></p>
+                    </fieldset>
+
                     <div>
-                        <label for="waitlist-description" class="block text-xs font-medium text-slate-400 mb-2 mono uppercase tracking-wider">What are you building?</label>
-                        <textarea id="waitlist-description" name="description" required minlength="10" maxlength="2000" rows="4" placeholder="A few sentences on your stack and use case — Postgres at scale, DuckDB in production, embedded analytics, etc."
-                            class="w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-pg/40 focus:border-pg transition-colors resize-y"></textarea>
-                        <p class="text-red-400 text-xs mt-1.5 hidden" data-error-for="description"></p>
+                        <label for="waitlist-workload" class="block text-xs font-medium text-slate-400 mb-2 mono uppercase tracking-wider">What's the workload you'd point at Duckgresql?</label>
+                        <textarea id="waitlist-workload" name="workload" required minlength="10" maxlength="2000" rows="5" placeholder="Tell us about the app. What does it do, how many concurrent users, what's breaking with your current setup?"
+                            class="w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-duck/40 focus:border-duck transition-colors resize-y"></textarea>
+                        <p class="text-red-400 text-xs mt-1.5 hidden" data-error-for="workload"></p>
+                    </div>
+
+                    <div>
+                        <label for="waitlist-other" class="block text-xs font-medium text-slate-400 mb-2 mono uppercase tracking-wider">Anything else? <span class="text-slate-600 normal-case tracking-normal">(optional)</span></label>
+                        <textarea id="waitlist-other" name="other" maxlength="2000" rows="3" placeholder="Anything we should know."
+                            class="w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-duck/40 focus:border-duck transition-colors resize-y"></textarea>
                     </div>
 
                     <p id="waitlist-general-error" class="text-red-400 text-sm hidden"></p>
 
                     <button id="waitlist-submit" type="submit"
                         class="btn-primary w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm">
-                        Request beta access
+                        Apply for a slot
                         <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
                     </button>
-                    <p class="text-center text-xs text-slate-500 mono">No spam. We read every submission.</p>
+                    <p class="text-center text-xs text-slate-500 leading-relaxed">We read every application personally. We'll reply within 5 business days, even if it's not a fit right now.</p>
                 </form>
             </div>
         </div>
@@ -780,7 +753,7 @@ tailwind.config = {
                         <img src="images/logo.avif" alt="Duckgresql" class="h-10">
                     </a>
                     <p class="text-slate-500 text-sm leading-relaxed max-w-xs">
-                        Postgres for transactions. DuckDB for analytics. One platform — managed or self-hosted.
+                        DuckDB-compatible Python SDK · Production-grade infrastructure · Private beta.
                     </p>
                     <a href="https://x.com/duckgresql" class="inline-flex items-center gap-2 mt-5 text-slate-500 hover:text-white transition-colors text-sm" target="_blank" rel="noopener noreferrer">
                         <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
@@ -791,10 +764,11 @@ tailwind.config = {
                 <div>
                     <h4 class="text-white text-xs font-semibold mb-4 mono uppercase tracking-wider">Product</h4>
                     <ul class="space-y-2.5">
+                        <li><a href="#sdk" class="text-slate-500 hover:text-slate-200 transition-colors text-sm">The SDK</a></li>
+                        <li><a href="#why" class="text-slate-500 hover:text-slate-200 transition-colors text-sm">Why we built this</a></li>
                         <li><a href="#how" class="text-slate-500 hover:text-slate-200 transition-colors text-sm">How it works</a></li>
-                        <li><a href="#features" class="text-slate-500 hover:text-slate-200 transition-colors text-sm">Features</a></li>
-                        <li><a href="#use-cases" class="text-slate-500 hover:text-slate-200 transition-colors text-sm">Use cases</a></li>
-                        <li><a href="#join" class="text-slate-500 hover:text-slate-200 transition-colors text-sm">Request access</a></li>
+                        <li><a href="#features" class="text-slate-500 hover:text-slate-200 transition-colors text-sm">What's in the SDK</a></li>
+                        <li><a href="#apply" class="text-slate-500 hover:text-slate-200 transition-colors text-sm">Apply</a></li>
                     </ul>
                 </div>
 
@@ -810,7 +784,7 @@ tailwind.config = {
 
             <div class="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <p class="text-slate-600 text-xs mono">&copy; 2026 Duckgresql. All rights reserved.</p>
-                <p class="text-slate-600 text-xs mono">Made for teams that outgrew a single database.</p>
+                <p class="text-slate-600 text-xs mono">DuckDB for real applications. Built by people who run it in production.</p>
             </div>
         </div>
     </footer>
@@ -840,7 +814,7 @@ tailwind.config = {
 
         // Subtle reveal on scroll
         (function () {
-            var els = document.querySelectorAll('section h2, section .code-block, section .diagram-box');
+            var els = document.querySelectorAll('section h2, section .code-block, section .diagram-box, section .letter-card');
             if (!('IntersectionObserver' in window)) return;
             els.forEach(function (el) { el.classList.add('reveal'); });
             var io = new IntersectionObserver(function (entries) {
@@ -851,7 +825,40 @@ tailwind.config = {
             els.forEach(function (el) { io.observe(el); });
         })();
 
-        // Waitlist form
+        // Copy buttons
+        (function () {
+            var buttons = document.querySelectorAll('.copy-btn');
+            buttons.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var targetId = btn.getAttribute('data-copy-target');
+                    var target = document.getElementById(targetId);
+                    if (!target) return;
+                    var text = target.innerText;
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(text).then(function () { showCopied(btn); });
+                    } else {
+                        var ta = document.createElement('textarea');
+                        ta.value = text;
+                        document.body.appendChild(ta);
+                        ta.select();
+                        try { document.execCommand('copy'); showCopied(btn); } catch (e) {}
+                        document.body.removeChild(ta);
+                    }
+                });
+            });
+
+            function showCopied(btn) {
+                var original = btn.textContent;
+                btn.textContent = 'Copied';
+                btn.classList.add('copied');
+                setTimeout(function () {
+                    btn.textContent = original;
+                    btn.classList.remove('copied');
+                }, 1400);
+            }
+        })();
+
+        // Apply form
         (function () {
             var form = document.getElementById("waitlist-form");
             if (!form) return;
@@ -861,63 +868,89 @@ tailwind.config = {
             var generalError = document.getElementById("waitlist-general-error");
             var fieldErrorNodes = {
                 name: form.querySelector('[data-error-for="name"]'),
+                role: form.querySelector('[data-error-for="role"]'),
                 company: form.querySelector('[data-error-for="company"]'),
+                stage: form.querySelector('[data-error-for="stage"]'),
                 email: form.querySelector('[data-error-for="email"]'),
-                description: form.querySelector('[data-error-for="description"]'),
+                duckdb_usage: form.querySelector('[data-error-for="duckdb_usage"]'),
+                workload: form.querySelector('[data-error-for="workload"]'),
             };
 
             function setFieldError(field, message) {
-                var input = form.querySelector('[name="' + field + '"]');
                 var error = fieldErrorNodes[field];
-                if (!input || !error) return;
-
+                if (!error) return;
                 error.textContent = message || "";
                 error.classList.toggle("hidden", !message);
-                input.style.borderColor = message ? "#f87171" : "";
+                var input = form.querySelector('[name="' + field + '"]');
+                if (input && input.style) input.style.borderColor = message ? "#f87171" : "";
             }
 
             function clearErrors() {
-                setFieldError("name", "");
-                setFieldError("company", "");
-                setFieldError("email", "");
-                setFieldError("description", "");
+                Object.keys(fieldErrorNodes).forEach(function (k) { setFieldError(k, ""); });
                 generalError.textContent = "";
                 generalError.classList.add("hidden");
             }
 
-            function validate(payload) {
-                var isValid = true;
-                if (payload.name.length < 2 || payload.name.length > 255) {
-                    setFieldError("name", "Name must be between 2 and 255 characters.");
-                    isValid = false;
+            function validate(p) {
+                var ok = true;
+                if (p.name.length < 2 || p.name.length > 255) { setFieldError("name", "Name must be between 2 and 255 characters."); ok = false; }
+                if (p.role.length < 2 || p.role.length > 255) { setFieldError("role", "Tell us your role."); ok = false; }
+                if (p.company.length < 2 || p.company.length > 255) { setFieldError("company", "Company name must be between 2 and 255 characters."); ok = false; }
+                if (!p.stage) { setFieldError("stage", "Pick a stage."); ok = false; }
+                if (!p.email || p.email.indexOf("@") < 1 || p.email.lastIndexOf(".") <= p.email.indexOf("@") + 1) { setFieldError("email", "Please enter a valid email address."); ok = false; }
+                if (!p.duckdb_usage) { setFieldError("duckdb_usage", "Pick one."); ok = false; }
+                if (p.workload.length < 10 || p.workload.length > 2000) { setFieldError("workload", "Please describe the workload in 10 to 2000 characters."); ok = false; }
+                return ok;
+            }
+
+            function buildDescription(p) {
+                var parts = [
+                    "Role: " + p.role,
+                    "Stage: " + p.stage,
+                    "DuckDB usage: " + p.duckdb_usage,
+                    "",
+                    "Workload:",
+                    p.workload,
+                ];
+                if (p.other) {
+                    parts.push("");
+                    parts.push("Other:");
+                    parts.push(p.other);
                 }
-                if (payload.company.length < 2 || payload.company.length > 255) {
-                    setFieldError("company", "Company name must be between 2 and 255 characters.");
-                    isValid = false;
-                }
-                if (!payload.email || payload.email.indexOf("@") < 1 || payload.email.lastIndexOf(".") <= payload.email.indexOf("@") + 1) {
-                    setFieldError("email", "Please enter a valid email address.");
-                    isValid = false;
-                }
-                if (payload.description.length < 10 || payload.description.length > 2000) {
-                    setFieldError("description", "Please describe your use case in 10 to 2000 characters.");
-                    isValid = false;
-                }
-                return isValid;
+                return parts.join("\n");
             }
 
             form.addEventListener("submit", async function (event) {
                 event.preventDefault();
                 clearErrors();
 
+                var fd = new FormData(form);
                 var payload = {
-                    name: ((form.elements.name && form.elements.name.value) || "").trim(),
-                    company: ((form.elements.company && form.elements.company.value) || "").trim(),
-                    email: ((form.elements.email && form.elements.email.value) || "").trim().toLowerCase(),
-                    description: ((form.elements.description && form.elements.description.value) || "").trim(),
+                    name: ((fd.get("name") || "") + "").trim(),
+                    role: ((fd.get("role") || "") + "").trim(),
+                    company: ((fd.get("company") || "") + "").trim(),
+                    stage: ((fd.get("stage") || "") + "").trim(),
+                    email: ((fd.get("email") || "") + "").trim().toLowerCase(),
+                    duckdb_usage: ((fd.get("duckdb_usage") || "") + "").trim(),
+                    workload: ((fd.get("workload") || "") + "").trim(),
+                    other: ((fd.get("other") || "") + "").trim(),
                 };
 
                 if (!validate(payload)) return;
+
+                // Backend expects: name, company, email, description.
+                // Pack the structured fields into description; also send raw fields for forward compatibility.
+                var body = {
+                    name: payload.name,
+                    company: payload.company,
+                    email: payload.email,
+                    description: buildDescription(payload),
+                    role: payload.role,
+                    stage: payload.stage,
+                    duckdb_usage: payload.duckdb_usage,
+                    workload: payload.workload,
+                    other: payload.other,
+                };
 
                 submitButton.disabled = true;
                 var originalText = submitButton.innerHTML;
@@ -927,12 +960,12 @@ tailwind.config = {
                     var response = await fetch(form.getAttribute("action") || "/api/waitlist", {
                         method: "POST",
                         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                        body: new URLSearchParams(payload).toString(),
+                        body: new URLSearchParams(body).toString(),
                     });
 
                     var result = await response.json().catch(function () { return null; });
                     if (!response.ok) {
-                        var message = result && result.error ? result.error : "We couldn't submit your request. Please try again.";
+                        var message = result && result.error ? result.error : "We couldn't submit your application. Please try again.";
                         if (message.toLowerCase().indexOf("email") >= 0) setFieldError("email", message);
                         else { generalError.textContent = message; generalError.classList.remove("hidden"); }
                         return;
