@@ -4,32 +4,42 @@ Source for the **Duckgresql** public site: [duckgresql.cloud](https://duckgresql
 
 ## What is Duckgresql?
 
-**Duckgresql** is a SaaS platform that combines **DuckDB** and **PostgreSQL** in one service — unified SQL access to DuckDB for analytics and PostgreSQL for transactional workloads.
+**Duckgresql is DuckDB for real applications** — DuckDB's analytical engine, made operable for apps with concurrent users.
 
-- **DuckDB** — OLAP: embedded analytical database, columnar storage, massively parallel processing, SQL with zero setup.
-- **PostgreSQL** — OLTP: ACID transactions, row-based storage, rich ecosystem and extensions, proven reliability at scale.
+It's delivered as:
 
-**Duckgresql = DuckDB + PostgreSQL** in a single, fully managed platform.
+- A **remote service** that handles the operational layer: connection pooling, memory configuration per connection, query routing under concurrent load, and graceful error handling.
+- A **DuckDB-compatible Python SDK**. Replace `import duckdb` with `import duckgresql`, point it at the remote service, and keep using the same execution methods (`fetchall`, `fetchone`, `fetchdf`, `fetch_arrow_table`, async support).
 
-## Highlights
+```python
+import duckgresql
 
-- **Unified SQL interface** — Same SQL for analytics and transactions; no separate dialects or connection management.
-- **Real-time sync** — Automatic synchronization between DuckDB and PostgreSQL.
-- **Performance** — DuckDB for 10–100× faster analytical queries; PostgreSQL for reliable OLTP.
-- **Fully managed** — Scaling, backups, security, and maintenance handled for you.
-- **Enterprise security** — SOC 2 compliant, encryption at rest and in transit, RBAC, audit logs.
-- **Easy integration** — Standard PostgreSQL drivers; works with existing tools and ORMs.
+conn = duckgresql.connect(token="dkgql_...", database="my_database")
+result = conn.execute(
+    "SELECT user_id, COUNT(*) FROM events GROUP BY 1"
+).fetchall()
+```
 
-## Use cases (from the site)
+A **Postgres bridge** is available as an optional capability for teams migrating from Postgres or wanting to query both systems with one SQL surface. It's not in the hot path.
 
-- **Analytics dashboards** — Real-time dashboards on live transactional data without impacting production.
-- **Mobile app backends** — PostgreSQL for user data and transactions; DuckDB for analytics.
-- **Data warehouse alternative** — Cost-effective analytics on operational data; no ETL required.
-- **AI/ML feature store** — Store training data in PostgreSQL, compute features with DuckDB, serve predictions in one platform.
+## What's in the SDK today
 
-## Join the waiting list
+- DuckDB-compatible Python API (connect, execute, fetch methods, async support).
+- Concurrent reads against tuned DuckDB engines.
+- Async jobs for long-running analytical queries.
+- Optional Postgres bridge for gradual migration or unified queries.
 
-Duckgresql is in private beta. Sign up at [duckgresql.cloud#join](https://duckgresql.cloud#join) to get notified when access is available.
+JavaScript / TypeScript SDK is on the way.
+
+## Status
+
+Private beta. We're taking on **five teams as design partners**: free during the program, direct access to the founder, in exchange for a 30-minute call every two weeks. We prioritize teams already running DuckDB in or near production.
+
+Apply at [duckgresql.cloud#apply](https://duckgresql.cloud#apply).
+
+## About this repo
+
+This repository contains only the static landing site (`index.html`, `privacy.html`, `terms.html`) deployed at `duckgresql.cloud`. The product itself lives elsewhere.
 
 ---
 
